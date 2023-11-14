@@ -34,7 +34,7 @@ function Register() {
       setLoggedIn(true);
       navigate(
         location?.state?.previouseUrl
-          ? location.state.previousUrl : '/Home'
+          ? location.state.previousUrl : '/'
       );
     })
   }
