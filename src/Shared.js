@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 
 function Shared() {
-    // const [baseUrl, setBaseUrl] = useState('https://shut-up-dev.onrender.com')
   return (
     <div>Shared</div>
   )
 }
 
 export default Shared
-export const baseUrl = 'http://localhost:5000';
+export const baseUrl = process.env.NODE_ENV == 'development' ? 'http://localhost:5000' : 'https://shut-up-dev.onrender.com';
