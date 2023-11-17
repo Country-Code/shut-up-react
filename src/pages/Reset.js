@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/shutUpLogo.png';
+import logo from '../assets/img/shutUpLogo.png';
 
 function Reset() {
 

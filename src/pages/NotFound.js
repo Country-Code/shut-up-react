@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
-import ImgNotFound from '../img/oops-erreur-404.png';
-import logo from'../img/shutUpLogo.png';
+import ImgNotFound from '../assets/img/oops-erreur-404.png';
+import logo from '../assets/img/shutUpLogo.png';
 
 function NotFound() {
   const navigate = useNavigate();

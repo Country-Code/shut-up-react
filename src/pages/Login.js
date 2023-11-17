@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { baseUrl } from '../Shared';
-import logo from '../img/shutUpLogo.png';
+import logo from '../assets/img/shutUpLogo.png';
 
 function Login() {
 
@@ -30,6 +30,8 @@ function Login() {
       })
       .then((data) => {
         setLoggedIn(true);
+        // local storage is used now, using global state would be better (TBD)
+        localStorage.setItem('loggedIn', true);
         navigate(
           location?.state?.previouseUrl
             ? location.state.previousUrl : '/'
