@@ -15,7 +15,7 @@ function Register() {
 
   function register(e) {
     e.preventDefault();
-    const url = baseUrl + '/api/users';
+    const url = baseUrl + '/api/auth';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -43,7 +43,7 @@ function Register() {
       <section className="bg-gray-50">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-            <img className="w-32" src={logo} alt="logo" />
+            <img className="w-32" src={logo} alt="Shut-up" />
           </a>
           <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
