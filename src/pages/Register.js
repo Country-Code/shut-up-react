@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { baseUrl } from '../Shared';
-import logo from '../img/shutUpLogo.png';
+import logo from '../assets/img/shutUpLogo.png';
 
 function Register() {
 
