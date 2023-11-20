@@ -22,9 +22,8 @@
     "typescript": "4.1.3"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && npm i;react-scripts build",
-    "serve": "react-dotenv && serve build", 
+    "start": "react-scripts start",
+    "build": "npm i;react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -33,8 +32,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "react-dotenv": {
-    "whitelist": ["API_URL"]
-  }
+  ]
 }
