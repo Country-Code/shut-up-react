@@ -12,7 +12,7 @@ function NotFound() {
     <div>
       <section className="bg-gray-50 text-slate-500 md:h-screen flex flex-col items-center justify-center">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-          <img className="w-32" src={logo} alt="logo" />
+          <img className="w-32" src={logo} alt="Shut-up" />
         </a>
         <div className="flex flex-col md:flex-row items-center justify-center px-6 py-8 mx-auto lg:py-0 bg-white md:mt-0 rounded-lg shadow w-10/12">
           <div className='w-full md:w-1/2'><img className="" src={ImgNotFound} alt=""/></div>
