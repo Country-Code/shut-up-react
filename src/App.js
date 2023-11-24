@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Profil from "./pages/Profil";
 import Reset from "./pages/Reset";
 import NotFound from "./pages/NotFound";
+import Forgot from './pages/Forgot';
 import "./styles.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/profil' element={<Profil />} />
         <Route path='/reset' element={<Reset />} />
+        <Route path="/reset-password/:token"  element={<Forgot />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
