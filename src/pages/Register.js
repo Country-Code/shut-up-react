@@ -1,42 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../services/actions/userActions';
 import { baseUrl } from '../Shared';
 import logo from '../assets/img/shutUpLogo.png';
 
 function Register() {
 
-  const [loggedIn, setLoggedIn] = useState()
   const [fullname, setFullname] = useState();
   const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   const [email, setEmail] = useState();
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const userRegister = useSelector(state => state.userRegister)
 
-  function register(e) {
-    e.preventDefault();
-    const url = baseUrl + '/api/auth';
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fullname: fullname,
-        email: email,
-        password: password,
-      }),
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      setLoggedIn(true);
-      navigate(
-        location?.state?.previouseUrl
-          ? location.state.previousUrl : '/'
-      );
-    })
+  const {error, loading, userInfo} = userRegister
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userInfo])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    if (password === confirmPassword) {
+      dispatch(register(fullname, email, password))
+    }
   }
   return (
     <div>
@@ -50,7 +43,7 @@ function Register() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Create and account
               </h1>
-              <form name='registerForm' className="space-y-4 md:space-y-6" action="#" onSubmit={register}>
+              <form name='registerForm' className="space-y-4 md:space-y-6" action="#" onSubmit={submitHandler}>
                 <div>
                   <label htmlFor="fullname" className="block mb-2 text-sm font-medium text-gray-900">Name :</label>
                 <input
@@ -88,6 +81,19 @@ function Register() {
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     minLength={2}
                     onChange={(e) => { setPassword(e.target.value) }}
+                    required />
+                </div>
+                <div>
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900">Confirm Password :</label>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={confirmPassword || ''}
+                    id="confirmPassword"
+                    placeholder="••••••••"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    minLength={2}
+                    onChange={(e) => { setConfirmPassword(e.target.value) }}
                     required />
                 </div>
                 <button type="submit" className="w-full text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>

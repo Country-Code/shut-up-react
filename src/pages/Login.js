@@ -1,42 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { baseUrl } from '../Shared';
+import { login } from '../services/actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../assets/img/shutUpLogo.png';
 
 function Login() {
 
-  const [loggedIn, setLoggedIn] = useState()
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const userLogin = useSelector(state => state.userLogin)
 
-  function login(e) {
-    e.preventDefault();
-    const url = baseUrl + '/api/auth/login';
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setLoggedIn(true);
-        // local storage is used now, using global state would be better (TBD)
-        localStorage.setItem('loggedIn', true);
-        navigate(
-          location?.state?.previouseUrl
-            ? location.state.previousUrl : '/'
-        );
-      })
+  const {error, loading, userInfo} = userLogin
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/')
+    }
+  }, [navigate, userInfo])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(login(email, password))
   }
   return (
     <div>
@@ -50,7 +38,7 @@ function Login() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 User Log in
               </h1>
-              <form name='loginForm' className="space-y-4 md:space-y-6" action="#" onSubmit={login}>
+              <form name='loginForm' className="space-y-4 md:space-y-6" action="#" onSubmit={submitHandler}>
                 <div>
                   <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900">Email :</label>
                   <input 
