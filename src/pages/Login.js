@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { login } from '../services/actions/userActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import useRessource from '../hooks/useRessource';
+import { useDispatch } from 'react-redux';
 import logo from '../assets/img/shutUpLogo.png';
 
 function Login() {
-
+  console.log("Login MOUNT");
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
 
-  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const userLogin = useSelector(state => state.userLogin)
-
-  const {error, loading, userInfo} = userLogin
+  const [authState, authRepo] = useRessource("auth");
+  const {error, loading, userInfo} = authState;
 
   useEffect(() => {
     if (userInfo) {
@@ -24,7 +22,7 @@ function Login() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(login(email, password))
+    dispatch(authRepo.login(email, password))
   }
   return (
     <div>
