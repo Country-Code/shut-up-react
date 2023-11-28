@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../services/actions/userActions';
-import { baseUrl } from '../Shared';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import useRessource from '../hooks/useRessource';
 import logo from '../assets/img/shutUpLogo.png';
 
 function Register() {
@@ -11,13 +10,11 @@ function Register() {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [email, setEmail] = useState();
-
-  const location = useLocation();
+  const [authState, authRepo] = useRessource("auth");
+  const {error, loading, userInfo} = authState;
+  
   const navigate = useNavigate();
   const dispatch = useDispatch()
-  const userRegister = useSelector(state => state.userRegister)
-
-  const {error, loading, userInfo} = userRegister
 
   useEffect(() => {
     if (userInfo) {
@@ -28,7 +25,7 @@ function Register() {
   const submitHandler = (e) => {
     e.preventDefault()
     if (password === confirmPassword) {
-      dispatch(register(fullname, email, password))
+      dispatch(authRepo.register(fullname, email, password))
     }
   }
   return (
