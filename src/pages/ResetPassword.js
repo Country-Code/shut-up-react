@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import logo from "../assets/img/shutUpLogo.png";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
+import Button from '../components/Button';
 
 function ResetPassword() {
     const navigate = useNavigate();
@@ -78,13 +79,7 @@ function ResetPassword() {
 										{errorMessage && <>{errorMessage}</>}
                                     </label>
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="w-full text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-								>
-                                    {loading && "Reseting in progress ..."}
-                                    {!loading && "Reset password"}
-                                </button>
+                                <Button loading={loading} buttonText="Reset password" />
                             </form>
                         </div>
                     </div>
