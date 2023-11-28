@@ -21,5 +21,14 @@ export default () => {
             });
             return response.data;
         },
+
+        reset: async (newPassword, resetPasswordToken) => {
+            console.log(`authApi->reset(${newPassword}, ${resetPasswordToken})`)
+            const response = await authAxios.post("/reset-password", {
+                newPassword,
+                resetPasswordToken
+            });
+            return response.data;
+        },
     };
 };

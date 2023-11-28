@@ -7,16 +7,19 @@ export default (authApi) => {
             console.log("auth.register action.");
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
-                const { user } = await authApi.register(fullname, email, password);
-                console.log("auth.register action. user  : ", user)
+                const data = await authApi.register(
+                    fullname,
+                    email,
+                    password
+                );
                 dispatch({
-                    type: actionsType.AUTH_REGISTER_SUCCESS,
-                    payload: user,
+                    type: actionsType.AUTH_REQUEST_SUCCESS,
+                    payload: data,
                 });
-                localStorage.setItem('userInfo', JSON.stringify(user));
+                localStorage.setItem("userInfo", JSON.stringify(user));
             } catch (error) {
                 dispatch({
-                    type: actionsType.AUTH_REGISTER_FAIL,
+                    type: actionsType.AUTH_REQUEST_FAIL,
                     payload: error.response.data.message ?? error.message,
                 });
             }
@@ -25,16 +28,33 @@ export default (authApi) => {
             console.log("auth.login action.");
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
-                const { user } = await authApi.login(email, password);
-                console.log("auth.login action. user  : ", user)
+                const data = await authApi.login(email, password);
+                console.log("auth.login action. user  : ", user);
                 dispatch({
-                    type: actionsType.AUTH_LOGIN_SUCCESS,
-                    payload: user,
+                    type: actionsType.AUTH_REQUEST_SUCCESS,
+                    payload: data,
                 });
-                localStorage.setItem('userInfo', JSON.stringify(user));
-        } catch (error) {
+                localStorage.setItem("userInfo", JSON.stringify(user));
+            } catch (error) {
                 dispatch({
-                    type: actionsType.AUTH_LOGIN_FAIL,
+                    type: actionsType.AUTH_REQUEST_FAIL,
+                    payload: error?.response?.data?.message ?? error.message,
+                });
+            }
+        },
+        reset: (newPassword, resetPasswordToken) => async (dispatch) => {
+            console.log(`authApi->reset(${newPassword}, ${resetPasswordToken})`)
+            try {
+                dispatch({ type: actionsType.AUTH_REQUEST });
+                const data = await authApi.reset(newPassword, resetPasswordToken);
+                dispatch({
+                    type: actionsType.AUTH_REQUEST_SUCCESS,
+                    payload: data,
+                });
+            } catch (error) {
+                console.log(`authApi->reset->error : `, error?.response?.data?.message)
+                dispatch({
+                    type: actionsType.AUTH_REQUEST_FAIL,
                     payload: error?.response?.data?.message ?? error.message,
                 });
             }

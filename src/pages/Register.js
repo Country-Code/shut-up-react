@@ -11,16 +11,16 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [email, setEmail] = useState();
   const [authState, authRepo] = useRessource("auth");
-  const {error, loading, userInfo} = authState;
+  const {error, loading, data: {user = null}} = authState;
   
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (userInfo) {
+    if (user) {
       navigate('/')
     }
-  }, [navigate, userInfo])
+  }, [navigate, user])
 
   const submitHandler = (e) => {
     e.preventDefault()
