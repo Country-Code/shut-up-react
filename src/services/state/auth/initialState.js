@@ -3,5 +3,7 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
     : null;
 
 export default {
-    userInfo: userInfoFromStorage,
+    data: {
+        user: userInfoFromStorage
+    },
 };

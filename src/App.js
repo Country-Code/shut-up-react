@@ -5,9 +5,9 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profil from "./pages/Profil";
-import Reset from "./pages/Reset";
+import PasswordForgoten from "./pages/PasswordForgoten";
 import NotFound from "./pages/NotFound";
-import Forgot from './pages/Forgot';
+import ResetPassword from './pages/ResetPassword';
 import "./styles.css";
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/profil' element={<Profil />} />
-        <Route path='/reset' element={<Reset />} />
-        <Route path="/reset-password/:token"  element={<Forgot />} />
+        <Route path='/password-forgoten' element={<PasswordForgoten />} />
+        <Route path="/reset-password/:token"  element={<ResetPassword />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
