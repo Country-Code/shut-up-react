@@ -16,7 +16,7 @@ export default (authApi) => {
                     type: actionsType.AUTH_REQUEST_SUCCESS,
                     payload: data,
                 });
-                localStorage.setItem("userInfo", JSON.stringify(user));
+                localStorage.setItem("auth-data", JSON.stringify(data));
             } catch (error) {
                 dispatch({
                     type: actionsType.AUTH_REQUEST_FAIL,
@@ -29,12 +29,11 @@ export default (authApi) => {
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
                 const data = await authApi.login(email, password);
-                console.log("auth.login action. user  : ", user);
                 dispatch({
                     type: actionsType.AUTH_REQUEST_SUCCESS,
                     payload: data,
                 });
-                localStorage.setItem("userInfo", JSON.stringify(user));
+                localStorage.setItem("auth-data", JSON.stringify(data));
             } catch (error) {
                 dispatch({
                     type: actionsType.AUTH_REQUEST_FAIL,
@@ -60,7 +59,7 @@ export default (authApi) => {
             }
         },
         logout: () => (dispatch) => {
-            localStorage.removeItem("userInfo");
+            localStorage.removeItem("auth-data");
             dispatch({
                 type: actionsType.AUTH_LOGOUT,
             });
