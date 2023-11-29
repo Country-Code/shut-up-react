@@ -30,5 +30,13 @@ export default () => {
             });
             return response.data;
         },
+
+        forgot: async (email) => {
+            console.log(`authApi->forgot(${email})`)
+            const response = await authAxios.post("/password-forgoten", {
+                email
+            });
+            return response.data;
+        },
     };
 };

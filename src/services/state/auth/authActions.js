@@ -58,6 +58,23 @@ export default (authApi) => {
                 });
             }
         },
+        forgot: (email) => async (dispatch) => {
+            console.log(`authApi->forgot(${email})`)
+            try {
+                dispatch({ type: actionsType.AUTH_REQUEST });
+                const data = await authApi.forgot(email);
+                dispatch({
+                    type: actionsType.AUTH_REQUEST_SUCCESS,
+                    payload: data,
+                });
+            } catch (error) {
+                console.log(`authApi->fogot->error : `, error?.response?.data?.message)
+                dispatch({
+                    type: actionsType.AUTH_REQUEST_FAIL,
+                    payload: error?.response?.data?.message ?? error.message,
+                });
+            }
+        },
         logout: () => (dispatch) => {
             localStorage.removeItem("auth-data");
             dispatch({
