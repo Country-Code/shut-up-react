@@ -19,7 +19,7 @@ function MailEnvoyer(props) {
     }
     return (
         <div>
-            <section className="bg-gray-50 text-slate-500 md:h-screen flex flex-col items-center justify-center">
+            <section className="bg-gray-50 text-slate-500 flex flex-col items-center justify-center p-6">
                 <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <img className="w-32" src={logo} alt="Shut-up" />
                 </a>
