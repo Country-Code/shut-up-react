@@ -3,6 +3,7 @@ import { baseUrl } from '../Shared';
 // import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../assets/img/shutUpLogo.png';
+import Button from '../components/Button';
 
 function Reset() {
   
@@ -49,6 +50,7 @@ function Reset() {
                     onChange={(e) => { setEmail(e.target.value) }}
                     required />
                 </div>
+                {/* <Button loading={loading} buttonText="Create an account" /> */}
                 <button type="submit" className="w-full text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sent</button>
               </form>
             </div>

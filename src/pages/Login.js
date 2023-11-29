@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
+import Button from '../components/Button';
 import logo from "../assets/img/shutUpLogo.png";
 
 function Login() {
@@ -92,12 +93,7 @@ function Login() {
                                         required
                                     />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="w-full text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                >
-                                    Login
-                                </button>
+                                <Button loading={loading} buttonText="Login" />
                                 <p className="text-sm font-light text-gray-500">
                                     Forgot{" "}
                                     <a
