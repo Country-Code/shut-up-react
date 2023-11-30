@@ -93,7 +93,6 @@ function Login() {
                                         required
                                     />
                                 </div>
-                                <Button loading={loading} buttonText="Login" />
                                 <p className="text-sm font-light text-gray-500">
                                     Forgot{" "}
                                     <a
@@ -101,6 +100,16 @@ function Login() {
                                         className="font-medium text-primary-600 hover:underline"
                                     >
                                         Password?
+                                    </a>
+                                </p>
+                                <Button loading={loading} buttonText="Login" />
+                                <p className="text-sm font-light text-gray-500">
+                                    Not a Member{" "}
+                                    <a
+                                        href="/register"
+                                        className="font-medium text-primary-600 hover:underline"
+                                    >
+                                        Signup?
                                     </a>
                                 </p>
                             </form>

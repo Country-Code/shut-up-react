@@ -30,7 +30,7 @@ function MailEnvoyer(props) {
                         <div className='w-full md:w-1/2'>
                             <p className='text-2xl md:text-3xl font-light leading-normal'>Password reset mail is sent to : </p>
                             <p className='text-2xl md:text-3xl leading-normal font-bold mt-4'>{props.email}</p>
-                            <p className='mb-8 mt-8'>If you have not received a confirmation message your application may not have been successfully delivered.</p>
+                            <p className='mb-8 mt-8'>Chek your mailbox, if you haven't received it, please click the button below.</p>
                             <button type='submit' className='text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
                                 Send back
                             </button>
