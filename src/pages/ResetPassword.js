@@ -4,32 +4,34 @@ import logo from "../assets/img/shutUpLogo.png";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import Button from '../components/Button';
+import ErrorMessage from "../components/ErrorMessage";
 
 function ResetPassword() {
     const navigate = useNavigate();
     const { token } = useParams();
     const [newPassword, setNewPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
-	const [authState, authRepo] = useRessource("auth");
-	const {error, loading, data = null} = authState;
+    const [authState, authRepo] = useRessource("auth");
+    const { error, loading, data = null } = authState;
     const dispatch = useDispatch();
 
-	useEffect(() => {
+    useEffect(() => {
         console.log("ResetPassword useEffect authState: ", authState)
-		if (error) {
-			console.log("ResetPassword useEffect error : ", error)
-			setErrorMessage(error)
-		} else if (data.message) {
-			console.log("ResetPassword useEffect data : ", data)
-			navigate("/login");
-		}
-	}, [authState, data, error]);
+        if (error) {
+            ErrorMessage.error(error)
+            setErrorMessage(error)
+        } else if (data.message) {
+            console.log("ResetPassword useEffect data : ", data)
+            ErrorMessage.success(data.message)
+            navigate("/login");
+        }
+    }, [authState, data, error]);
 
     const reset = (e) => {
         e.preventDefault();
-		console.log("ResetPassword reset:")
-		dispatch(authRepo.reset(newPassword, token));
-        
+        console.log("ResetPassword reset:")
+        dispatch(authRepo.reset(newPassword, token));
+
     }
 
     return (
@@ -68,7 +70,7 @@ function ResetPassword() {
                                         placeholder="••••••••"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                         onChange={(e) => {
-											console.log("password changing ...")
+                                            console.log("password changing ...")
                                             setNewPassword(e.target.value);
                                         }}
                                     />
@@ -76,7 +78,7 @@ function ResetPassword() {
                                         htmlFor="newPassword"
                                         className="block mb-2 text-sm font-medium text-red-900"
                                     >
-										{errorMessage && <>{errorMessage}</>}
+                                        {errorMessage && <>{errorMessage}</>}
                                     </label>
                                 </div>
                                 <Button loading={loading} buttonText="Reset password" />

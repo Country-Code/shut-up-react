@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import useRessource from '../hooks/useRessource';
 import logo from '../assets/img/shutUpLogo.png';
 import Button from '../components/Button';
+import ErrorMessage from '../components/ErrorMessage';
 
 function Register() {
 
@@ -12,16 +13,18 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [email, setEmail] = useState();
   const [authState, authRepo] = useRessource("auth");
-  const {error, loading, data: {user = null}} = authState;
-  
+  const { error, loading, data: { user = null } } = authState;
+
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (user) {
       navigate('/')
+    } else if (error) {
+      ErrorMessage.error(error)
     }
-  }, [navigate, user])
+  }, [navigate, authState])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -44,7 +47,7 @@ function Register() {
               <form name='registerForm' className="space-y-4 md:space-y-6" action="#" onSubmit={submitHandler}>
                 <div>
                   <label htmlFor="fullname" className="block mb-2 text-sm font-medium text-gray-900">Name :</label>
-                <input
+                  <input
                     type="text"
                     name="fullname"
                     value={fullname || ''}

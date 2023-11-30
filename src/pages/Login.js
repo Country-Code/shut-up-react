@@ -4,6 +4,7 @@ import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import Button from '../components/Button';
 import logo from "../assets/img/shutUpLogo.png";
+import ErrorMessage from "../components/ErrorMessage";
 
 function Login() {
     console.log("Login MOUNT");
@@ -24,6 +25,8 @@ function Login() {
         if (user) {
             console.log(user);
             navigate("/");
+        } else if (error) {
+            ErrorMessage.error(error)
         }
     }, [authState, navigate]);
 
