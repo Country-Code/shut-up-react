@@ -97,7 +97,7 @@ function Login() {
                                 <p className="text-sm font-light text-gray-500">
                                     Forgot{" "}
                                     <a
-                                        href="/reset"
+                                        href="/password-forgoten"
                                         className="font-medium text-primary-600 hover:underline"
                                     >
                                         Password?
