@@ -6,11 +6,11 @@ import { useDispatch } from "react-redux";
 import logo from '../assets/img/shutUpLogo.png';
 import Button from '../components/Button';
 import MailEnvoyer from './MailEnvoyer';
+import ErrorMessage from '../components/ErrorMessage';
 
 function PasswordForgoten() {
 
   const [email, setEmail] = useState();
-  // const navigate = useNavigate();
   const [authState, authRepo] = useRessource("auth");
   const [errorMessage, setErrorMessage] = useState(null);
   const { error, loading, data = null } = authState;
@@ -20,10 +20,11 @@ function PasswordForgoten() {
   useEffect(() => {
     console.log("ResetPassword useEffect authState: ", authState)
     if (error) {
-      console.log("ResetPassword useEffect error : ", error)
+      ErrorMessage.error(error)
       setErrorMessage(error)
     } else if (data.message) {
       setShow(true)
+      ErrorMessage.success(data.message)
       console.log("ResetPassword useEffect data : ", data)
     }
   }, [authState, data, error]);
