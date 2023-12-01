@@ -1,4 +1,5 @@
 import * as actionsType from "./actionTypes";
+import api from "../../api/api";
 
 export default (authApi) => {
     console.log("AuthActions : ")
@@ -18,10 +19,7 @@ export default (authApi) => {
                 });
                 localStorage.setItem("auth-data", JSON.stringify(data));
             } catch (error) {
-                dispatch({
-                    type: actionsType.AUTH_REQUEST_FAIL,
-                    payload: error.response.data.message ?? error.message,
-                });
+                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
             }
         },
         login: (email, password) => async (dispatch) => {
@@ -35,10 +33,7 @@ export default (authApi) => {
                 });
                 localStorage.setItem("auth-data", JSON.stringify(data));
             } catch (error) {
-                dispatch({
-                    type: actionsType.AUTH_REQUEST_FAIL,
-                    payload: error?.response?.data?.message ?? error.message,
-                });
+                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
             }
         },
         reset: (newPassword, resetPasswordToken) => async (dispatch) => {
@@ -51,11 +46,7 @@ export default (authApi) => {
                     payload: data,
                 });
             } catch (error) {
-                console.log(`authApi->reset->error : `, error?.response?.data?.message)
-                dispatch({
-                    type: actionsType.AUTH_REQUEST_FAIL,
-                    payload: error?.response?.data?.message ?? error.message,
-                });
+                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
             }
         },
         forgot: (email) => async (dispatch) => {
