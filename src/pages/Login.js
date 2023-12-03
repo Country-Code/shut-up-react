@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
-import Button from '../components/Button';
+import Button from '../components/ui/Button';
 import logo from "../assets/img/shutUpLogo.png";
-import ErrorMessage from "../components/ErrorMessage";
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 function Login() {
     console.log("Login MOUNT");

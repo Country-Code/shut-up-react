@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import logo from "../assets/img/shutUpLogo.png";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
-import Button from '../components/Button';
-import ErrorMessage from "../components/ErrorMessage";
+import Button from '../components/ui/Button';
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 function ResetPassword() {
     const navigate = useNavigate();
