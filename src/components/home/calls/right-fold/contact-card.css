@@ -1,0 +1,39 @@
+.contact-card {
+    background-color: white;
+    width: 28%;
+    height: 120px;
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.contact-avatar {
+    height: 80px;
+}
+
+.contact-top {
+    display: flex;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+
+}
+
+.contact-icons {
+    display: flex;
+    margin-top: 16px;
+    width: 40%;
+    justify-content: space-between;
+
+}
+
+.contact-name {
+    font-weight: 600;
+}
+.contact-type {
+    font-size: 12px;
+    margin: 6px 0;
+}

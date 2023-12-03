@@ -1,0 +1,75 @@
+.header {
+    width: 100%;
+    display: flex;
+    background-color: var(--teams-color);
+    color: white;
+    flex: 1;
+    padding: 6px 0;
+}
+
+.header-menu {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.header-leftFold {
+    display: flex;
+    flex: 3;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-rightFold {
+    display: flex;
+    flex: 11;
+    justify-content: space-between;
+}
+
+.header-label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 16px;
+}
+
+.header-search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 6;
+    background-color: var(--teams-color-light);
+    padding: 8px;
+    border-radius: 6px;
+    color: var(--teams-color);
+}
+
+.header-search input {
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    background-color: var(--teams-color-light);
+    margin-left: 6px;
+    color: var(--teams-color);
+    outline: none;
+}
+
+.header-profile {
+    display: flex;
+    flex: 4;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 16px;
+}
+
+.header-options {
+    font-size: 22px;
+}
+
+.header-avatar {
+    height: 40px;
+    margin-left: 15px;
+    border-radius: 50%;
+    background-color: var(--teams-color-light);
+}

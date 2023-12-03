@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --teams-color: #464775;
+    --teams-color-light: #e1e1e1;
+    --teams-color-light1: #d5d5e9;
+    --teams-color-light2: #ebebeb;
+    --teams-item-active: #6264a7;
+    --teams-gray: #616161;
+    --teams-gray-light: #f5f5f5;
+    --teams-gray-light2: #d0d0d0;
+    --teams-color-shadow: #dbdbdb;
+}

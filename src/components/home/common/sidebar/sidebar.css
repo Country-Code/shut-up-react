@@ -1,0 +1,9 @@
+.sidebar {
+    width: 100%;
+    background-color: var(--teams-color-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 5px 0;
+}

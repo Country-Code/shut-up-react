@@ -1,0 +1,24 @@
+.menu-item {
+    padding: 8px 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-item:hover .item-icon,
+.menu-item:hover {
+    color: var(--teams-item-active);
+    background-color: var(--teams-color-light);
+}
+
+.menu-item .item-label {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.item-icon {
+    font-size: 20px;
+    margin-right: 12px;
+    font-weight: 300;
+    color: var(--teams-gray);
+}
