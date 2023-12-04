@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import logo from '../assets/img/shutUpLogo.png';
 import Button from '../components/ui/Button';
 import MailEnvoyer from './MailEnvoyer';
-import ErrorMessage from "../components/ui/ErrorMessage";
+import AlertMessage from "../components/ui/AlertMessage";
 
 function PasswordForgoten() {
 
@@ -20,11 +20,11 @@ function PasswordForgoten() {
   useEffect(() => {
     console.log("ResetPassword useEffect authState: ", authState)
     if (error) {
-      ErrorMessage.error(error)
+      AlertMessage.error(error)
       setErrorMessage(error)
     } else if (data.message) {
       setShow(true)
-      ErrorMessage.success(data.message)
+      AlertMessage.success(data.message)
       console.log("ResetPassword useEffect data : ", data)
     }
   }, [authState, data, error]);
@@ -61,8 +61,7 @@ function PasswordForgoten() {
                       onChange={(e) => { setEmail(e.target.value) }}
                       required />
                   </div>
-                  {/* <Button loading={loading} buttonText="Create an account" /> */}
-                  <button type="submit" className="w-full text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sent</button>
+                  <Button loading={loading} buttonText="Sent" />
                 </form>
               </div>
             </div>

@@ -4,7 +4,7 @@ import logo from "../assets/img/shutUpLogo.png";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import Button from '../components/ui/Button';
-import ErrorMessage from "../components/ui/ErrorMessage";
+import AlertMessage from "../components/ui/AlertMessage";
 
 function ResetPassword() {
     const navigate = useNavigate();
@@ -18,11 +18,11 @@ function ResetPassword() {
     useEffect(() => {
         console.log("ResetPassword useEffect authState: ", authState)
         if (error) {
-            ErrorMessage.error(error)
+            AlertMessage.error(error)
             setErrorMessage(error)
         } else if (data.message) {
             console.log("ResetPassword useEffect data : ", data)
-            ErrorMessage.success(data.message)
+            AlertMessage.success(data.message)
             navigate("/login");
         }
     }, [authState, data, error]);
