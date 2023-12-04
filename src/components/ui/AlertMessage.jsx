@@ -7,11 +7,11 @@ const showToast = (message, type) => {
     });
 };
 
-const ErrorMessage = {
+const AlertMessage = {
     success: (message) => showToast(message, 'success'),
     error: (message) => showToast(message, 'error'),
     info: (message) => showToast(message, 'info'),
     warning: (message) => showToast(message, 'warning'),
 };
 
-export default ErrorMessage;
+export default AlertMessage;

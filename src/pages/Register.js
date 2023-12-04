@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import useRessource from '../hooks/useRessource';
 import logo from '../assets/img/shutUpLogo.png';
 import Button from '../components/ui/Button';
-import ErrorMessage from "../components/ui/ErrorMessage";
+import AlertMessage from "../components/ui/AlertMessage";
 
 function Register() {
 
@@ -22,7 +22,7 @@ function Register() {
     if (user) {
       navigate('/')
     } else if (error) {
-      ErrorMessage.error(error)
+      AlertMessage.error(error)
     }
   }, [navigate, authState])
 

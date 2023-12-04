@@ -3,11 +3,14 @@ import ImgMessage from '../assets/img/bg-message.jpg';
 import logo from '../assets/img/shutUpLogo.png';
 import { useDispatch } from "react-redux";
 import useRessource from "../hooks/useRessource";
+import Button from '../components/ui/Button';
 
 function MailEnvoyer(props) {
 
     const dispatch = useDispatch();
     const [authState, authRepo] = useRessource("auth");
+    const { loading } = authState;
+
 
 
 
@@ -31,9 +34,7 @@ function MailEnvoyer(props) {
                             <p className='text-2xl md:text-3xl font-light leading-normal'>Password reset mail is sent to : </p>
                             <p className='text-2xl md:text-3xl leading-normal font-bold mt-4'>{props.email}</p>
                             <p className='mb-8 mt-8'>Chek your mailbox, if you haven't received it, please click the button below.</p>
-                            <button type='submit' className='text-white bg-sky-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>
-                                Send back
-                            </button>
+                            <Button loading={loading} buttonText="Send back" />
                         </div>
                     </div>
                 </form>
