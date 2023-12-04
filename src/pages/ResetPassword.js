@@ -73,13 +73,13 @@ function ResetPassword() {
                                             console.log("password changing ...")
                                             setNewPassword(e.target.value);
                                         }}
+                                        required
                                     />
-                                    <label
-                                        htmlFor="newPassword"
-                                        className="block mb-2 text-sm font-medium text-red-900"
-                                    >
-                                        {errorMessage && <>{errorMessage}</>}
-                                    </label>
+                                    {errorMessage &&
+                                        <div className="block mb-2 text-sm font-medium text-red-900">
+                                            {errorMessage}
+                                        </div>
+                                    }
                                 </div>
                                 <Button loading={loading} buttonText="Reset password" />
                             </form>
