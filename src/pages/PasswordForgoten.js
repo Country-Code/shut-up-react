@@ -4,9 +4,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import logo from '../assets/img/shutUpLogo.png';
-import Button from '../components/Button';
+import Button from '../components/ui/Button';
 import MailEnvoyer from './MailEnvoyer';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 function PasswordForgoten() {
 

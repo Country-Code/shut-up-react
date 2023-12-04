@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute';
 import Home from "./pages/Home";
+import Calls from "./components/home/calls";
+import Conversation from "./components/home/conversation";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profil from "./pages/Profil";
@@ -16,8 +17,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<PrivateRoute />}>
-            <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />}>
+            <Route index element={<Calls />}/>
+            <Route path='/calls' element={<Calls />}/>
+            <Route path='/conversation' element={<Conversation />}/>
           </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />

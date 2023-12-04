@@ -1,0 +1,49 @@
+
+.leftFold-menu {
+    height: 47%;
+}
+
+.leftFold-dialer {
+    /* padding: 16px; */
+    /* background-color: white; */
+    height: 47%;
+    /* position: relative; */
+}
+
+.menu-items {
+    margin-top: 16px;
+}
+
+.dialer-label {
+    font-weight: 600;
+    color: var(--teams-gray);
+    font-size: 20px;
+}
+
+.dialer-search {
+    width: 100%;
+    background-color: var(--teams-gray-light);
+    margin: 8px 0;
+}
+
+.dialer-search input {
+    background: transparent;
+    padding: 8px;
+    outline: none;
+    border: none;
+}
+
+.dialer-suggested {
+    width: 100%;
+}
+
+.suggested-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--teams-gray);
+}
+
+.suggested-list {
+    width: 100%;
+    margin-top: 16px;
+}

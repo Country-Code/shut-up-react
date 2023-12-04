@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import Header from "../components/home/common/header";
+import Sidebar from "../components/home/common/sidebar";
+import "./home.css";
 
 function Home() {
-  return (
-    <h1 className="text-3xl font-bold">
-      Welcome to Shut-Up
-    </h1>
-  )
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log("Home useEffect empty");
+        if (!localStorage.getItem('auth-data')) {
+            navigate("/login");
+        } else if (location.pathname === "/") {
+            navigate("/calls");
+        }
+    }, []);
+
+    return (
+        <div className='home-container'>
+            <Header />
+            <div className='home-body'>
+                <div className='home-sidebare'>
+                    <Sidebar />
+                </div>
+                <Outlet />
+            </div>
+        </div>
+    )
 }
 
 export default Home

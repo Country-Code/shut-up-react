@@ -1,0 +1,62 @@
+.rightFold-heading {
+padding: 0 0 12px;
+border-bottom: 2px solid var(--teams-gray-light);
+}
+
+.heading-label {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.rightFold-options {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
+.add-button {
+    background-color: var(--teams-item-active);
+    width: fit-content;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.add-icon {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.add-label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.contact-search {
+    background-color: white;
+    width: fit-content;
+    display: flex;
+    padding: 6px;
+    align-items: center;
+}
+
+.contact-search input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.contact-search-icon {
+    color: var(--teams-gray-light2);
+}
+
+.contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    justify-content: flex-start;
+    gap: 16px;
+}

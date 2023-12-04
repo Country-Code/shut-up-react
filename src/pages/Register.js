@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useRessource from '../hooks/useRessource';
 import logo from '../assets/img/shutUpLogo.png';
-import Button from '../components/Button';
-import ErrorMessage from '../components/ErrorMessage';
+import Button from '../components/ui/Button';
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 function Register() {
 
