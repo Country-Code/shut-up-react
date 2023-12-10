@@ -18,6 +18,9 @@ export default (authApi) => {
                     payload: data,
                 });
                 localStorage.setItem("auth-data", JSON.stringify(data));
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                }
             } catch (error) {
                 api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
             }
@@ -32,6 +35,9 @@ export default (authApi) => {
                     payload: data,
                 });
                 localStorage.setItem("auth-data", JSON.stringify(data));
+                if (data.token) {
+                    localStorage.setItem("token", data.token);
+                }
             } catch (error) {
                 api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
             }

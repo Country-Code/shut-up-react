@@ -37,4 +37,14 @@ export default {
             payload: errorMessage,
         });
     },
+    call: async (ressourceApi, method, args) => {
+        if(!args) args = [];
+        // console.log(`API CALL params : ${method}(${args.join(', ')})`)
+        const data = await ressourceApi[method](...args);
+        // console.log(`API CALL data : `, data)
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+        }
+        return data;
+    },
 }
