@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
 import Calls from "./components/home/calls";
-import Conversation from "./components/home/conversation";
+import Conversation from "./components/home/conversation/Conversation";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profil from "./pages/Profil";
@@ -20,7 +20,9 @@ function App() {
           <Route path='/' element={<Home />}>
             <Route index element={<Calls />}/>
             <Route path='/calls' element={<Calls />}/>
-            <Route path='/conversation' element={<Conversation />}/>
+            <Route path='/conversation/' element={<Conversation />}>
+              <Route path=':id' element={<Conversation />} />
+            </Route>
           </Route>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
