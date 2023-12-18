@@ -1,0 +1,12 @@
+{
+    "message": {
+        "_id": "6580b64d8fb2760a3a19fb44",
+        "sender": "656295ebf5f388b5d43d423c",
+        "content": "message 2",
+        "chat": "65629060b29fb6b267165165",
+        "readBy": ["656295ebf5f388b5d43d423c", "65592d34c290095da5f137e8"],
+        "createdAt": "2023-12-18T21:14:53.819Z",
+        "updatedAt": "2023-12-18T21:16:02.561Z",
+        "__v": 0
+    }
+}

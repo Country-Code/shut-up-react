@@ -1,0 +1,8 @@
+{
+    "url": "{{MESSAGE_URL}}/send",
+    "method": "post",
+    "body": {
+        "chatId": "65629060b29fb6b267165165",
+        "content": "message 1"
+    }
+}

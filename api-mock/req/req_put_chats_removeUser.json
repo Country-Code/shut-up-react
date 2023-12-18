@@ -1,0 +1,7 @@
+{
+    "url": "{{CHAT_URL}}/6580af418fb2760a3a19fb1f/remove-user",
+    "method": "put",
+    "body": {
+        "userId": "655e2616a27ecd3e52e58097"
+    }
+}
