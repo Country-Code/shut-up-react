@@ -42,7 +42,17 @@ export default {
     call: async (ressourceApi, method, args) => {
         if(!args) args = [];
         // console.log(`API CALL params : ${method}(${args.join(', ')})`)
-        const data = await ressourceApi[method](...args);
+        let data;
+        try {
+            data = await ressourceApi[method](...args);
+        } catch (error) {
+            if(error?.response?.data?.code === "AUTH_MIDLLEWARE_TOKEN_EXPIRED") {
+                localStorage.removeItem("token");
+                localStorage.removeItem("auth-data");
+                document.location.href = "/login";
+            }
+            throw error;
+        }
         // console.log(`API CALL data : `, data)
         if (data.token) {
             localStorage.setItem("token", data.token);
