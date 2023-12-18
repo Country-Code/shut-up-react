@@ -6,9 +6,8 @@ export default {
         let headers = {
             "Content-Type": "application/json",
         };
-        const userData = localStorage.getItem("auth-data");
-        if (userData) {
-            const token = JSON.parse(userData).token;
+        const token = localStorage.getItem("token");
+        if (token) {
             headers.Authorization = `Bearer ${token}`
         }
 
