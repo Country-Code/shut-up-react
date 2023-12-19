@@ -16,7 +16,7 @@ export default () => {
                 name,
             });
         },
-        getAll: async () => {
+        getAllChats: async () => {
             return await api.call(authAxios, "get", "/");
         },
         getById: async (chatId) => {
