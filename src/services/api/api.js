@@ -1,5 +1,6 @@
 import authApi from "./authApi";
-import chatApi from "./chatApi";
+import chatsApi from "./chatsApi";
+import messagesApi from "./messagesApi";
 
 const apiErrorCodes = {
     "AUTH_REGISTER_FIELDS_MISSED": "Please fill all required fields!",
@@ -24,7 +25,8 @@ const getErrorMessageByCode = (code) => {
 
 export default {
     auth: authApi,
-    chats: chatApi,
+    chats: chatsApi,
+    messages: messagesApi,
     dispatchError: (dispatch, type, error) => {
         let err = error?.response?.data ?? error;
         const errorCode = err.code;
@@ -39,12 +41,12 @@ export default {
             payload: errorMessage,
         });
     },
-    call: async (ressourceApi, method, args) => {
-        if(!args) args = [];
-        // console.log(`API CALL params : ${method}(${args.join(', ')})`)
+    call: async (ressourceApi, method, url, args) => {
+        if(!args) args = {};
         let data;
         try {
-            data = await ressourceApi[method](...args);
+            const response = await ressourceApi[method](url, {...args});
+            data = response.data;
         } catch (error) {
             if(error?.response?.data?.code === "AUTH_MIDLLEWARE_TOKEN_EXPIRED") {
                 localStorage.removeItem("token");
@@ -53,7 +55,6 @@ export default {
             }
             throw error;
         }
-        // console.log(`API CALL data : `, data)
         if (data.token) {
             localStorage.setItem("token", data.token);
         }
