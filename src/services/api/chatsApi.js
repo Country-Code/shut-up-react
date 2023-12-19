@@ -19,7 +19,7 @@ export default () => {
         getAllChats: async () => {
             return await api.call(authAxios, "get", "/");
         },
-        getById: async (chatId) => {
+        getChatById: async (chatId) => {
             return await api.call(authAxios, "get", `/${chatId}`);
         },
         getChatByUser: async (userId) => {
@@ -30,7 +30,7 @@ export default () => {
                 userId,
             });
         },
-        rename: async (chatId, name) => {
+        renameChat: async (chatId, name) => {
             return await api.call(authAxios, "put", `/${chatId}/rename`, {
                 name,
             });
