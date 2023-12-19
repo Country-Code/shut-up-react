@@ -14,7 +14,7 @@ export default () => {
         getChatMessages: async (chatId) => {
             return await api.call(messagesAxios, "get", `chat/${chatId}`);
         },
-        readMessage: async (messageId, name) => {
+        readMessage: async (messageId) => {
             return await api.call(messagesAxios, "put", `/${messageId}/read`);
         },
     };
