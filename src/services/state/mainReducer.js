@@ -5,6 +5,7 @@ import messagesReducer from './messages/messagesReducer'
 
 export default combineReducers({
     auth: authReducer,
-    chats: chatsReducer,
+    chats: chatsReducer.default,
+    chatsRequest: chatsReducer.request,
     messages: messagesReducer,
 })

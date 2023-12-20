@@ -3,9 +3,9 @@ import api from '../services/api/api';
 import stateActions from '../services/state/stateActions';
 import { useSelector } from "react-redux";
 
-const useRessource = (ressource) => {
+const useRessource = (ressource, stateType = "") => {
     const [repo, setRepo] = useState(null);
-    const state = useSelector(state => state[ressource])
+    const state = useSelector(state => state[ressource + stateType])
     useEffect(()=> {
         const ressourceApi = api[ressource]();
         console.log("ressourceApi : ", ressourceApi)

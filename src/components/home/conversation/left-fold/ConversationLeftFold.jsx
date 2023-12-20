@@ -6,38 +6,32 @@ import Chat from "./chat/Chat";
 import "./conversation-left-fold.css";
 
 function ConversationLeftFold() {
-    const [chatState, chatRepo] = useRessource("chats");
+    const [chatRequestState, chatRepo] = useRessource("chats", "Request");
     const dispatch = useDispatch();
-    const {
-        error,
-        loading,
-        data: { chats = null },
-    } = chatState;
+    const { getAllChats } = chatRequestState;
+    console.log("useEffect : ", chatRequestState)
 
-    useEffect(()=> {
+    useEffect(() => {
         if (chatRepo) {
-            dispatch(chatRepo.getAll());
+            dispatch(chatRepo.getAllChats());
         }
-    }, [chatRepo])
+    }, [chatRepo]);
 
     return (
         <div className="leftFold conversation-left-fold">
             <div className="fold-title">Conversations</div>
             <div className="fold-main">
                 <div className="conversations">
-                    {!loading && error &&
-                        <div>Error : {error}</div>
-                    }
-                    {!loading && chats &&
-                        chats.toSorted((a, b) => b.updatedAt - a.updatedAt).map((chat) => (
-                            <Chat key={chat._id} chat={chat} />
-                        ))
-                    }
-                    {loading && <Loading />}
-
+                    {!getAllChats.loading && getAllChats.error && <div>Error : {getAllChats.error}</div>}
+                    {!getAllChats.loading &&
+                        getAllChats.data?.chats &&
+                        getAllChats.data.chats
+                            .toSorted((a, b) => b.updatedAt - a.updatedAt)
+                            .map((chat) => <Chat key={chat._id} chat={chat} />)}
+                    {getAllChats.loading && <Loading />}
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export default ConversationLeftFold;

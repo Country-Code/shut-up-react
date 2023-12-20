@@ -8,13 +8,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.ADD_USER_REQUEST });
                 const data = await chatApi.addUser(chatId, userId);
                 dispatch({
-                    type: actionsType.ADD_USER_REQUEST_SUCCESS,
+                    type: actionsType.ADD_USER_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.ADD_USER_REQUEST_FAIL,
+                    actionsType.ADD_USER_FAIL,
                     error
                 );
             }
@@ -24,13 +24,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.CREATE_GROUP_REQUEST });
                 const data = await chatApi.createGroup(users, name);
                 dispatch({
-                    type: actionsType.CREATE_GROUP_REQUEST_SUCCESS,
+                    type: actionsType.CREATE_GROUP_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.CREATE_GROUP_REQUEST_FAIL,
+                    actionsType.CREATE_GROUP_FAIL,
                     error
                 );
             }
@@ -40,13 +40,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.GET_ALL_CHATS_REQUEST });
                 const data = await chatApi.getAllChats();
                 dispatch({
-                    type: actionsType.GET_ALL_CHATS_REQUEST_SUCCESS,
+                    type: actionsType.GET_ALL_CHATS_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.GET_ALL_CHATS_REQUEST_FAIL,
+                    actionsType.GET_ALL_CHATS_FAIL,
                     error
                 );
             }
@@ -56,13 +56,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.GET_CHAT_BY_ID_REQUEST });
                 const data = await chatApi.getChatById(chatId);
                 dispatch({
-                    type: actionsType.GET_CHAT_BY_ID_REQUEST_SUCCESS,
+                    type: actionsType.GET_CHAT_BY_ID_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.GET_CHAT_BY_ID_REQUEST_FAIL,
+                    actionsType.GET_CHAT_BY_ID_FAIL,
                     error
                 );
             }
@@ -72,13 +72,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.GET_CHAT_BY_USER_REQUEST });
                 const data = await chatApi.getChatByUser(userId);
                 dispatch({
-                    type: actionsType.GET_CHAT_BY_USER_REQUEST_SUCCESS,
+                    type: actionsType.GET_CHAT_BY_USER_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.GET_CHAT_BY_USER_REQUEST_FAIL,
+                    actionsType.GET_CHAT_BY_USER_FAIL,
                     error
                 );
             }
@@ -88,13 +88,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.REMOVE_USER_REQUEST });
                 const data = await chatApi.removeUser(chatId, userId);
                 dispatch({
-                    type: actionsType.REMOVE_USER_REQUEST_SUCCESS,
+                    type: actionsType.REMOVE_USER_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.REMOVE_USER_REQUEST_FAIL,
+                    actionsType.REMOVE_USER_FAIL,
                     error
                 );
             }
@@ -104,13 +104,13 @@ export default (chatApi) => {
                 dispatch({ type: actionsType.RENAME_CHAT_REQUEST });
                 const data = await chatApi.removeUser(chatId, name);
                 dispatch({
-                    type: actionsType.RENAME_CHAT_REQUEST_SUCCESS,
+                    type: actionsType.RENAME_CHAT_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
-                    actionsType.RENAME_CHAT_REQUEST_FAIL,
+                    actionsType.RENAME_CHAT_FAIL,
                     error
                 );
             }

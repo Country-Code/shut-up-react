@@ -4,6 +4,6 @@ import messagesState from "./messages/initialState";
 
 export default {
     auth: authState,
-    chats: chatsState,
+    chatsRequest: chatsState,
     messages: messagesState,
 };

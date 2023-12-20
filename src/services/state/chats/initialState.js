@@ -1,7 +1,7 @@
 export default {
-    data: {
-        chats: []
+    getAllChats: {
+        error: null,
+        loading: false,
+        data: {},
     },
-    error: null,
-    loading: false
 };
