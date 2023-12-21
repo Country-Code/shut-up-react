@@ -1,0 +1,23 @@
+.message-date {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.message-content {
+    font-size: 16px;
+    background-color: var(--teams-color-light);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.my-message .message-content {
+    background-color: var(--teams-color);
+}
+
+.my-message {
+    text-align: right;
+    color: var(--teams-color-light2);
+}
