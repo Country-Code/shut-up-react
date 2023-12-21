@@ -18,7 +18,7 @@ export default (messagesApi) => {
         getChatMessages: (chatId) => async (dispatch) => {
             try {
                 dispatch({ type: actionsType.GET_CHAT_MESSAGES_REQUEST });
-                const data = await messagesApi.sendMessage(chatId);
+                const data = await messagesApi.getChatMessages(chatId);
                 dispatch({
                     type: actionsType.GET_CHAT_MESSAGES_SUCCESS,
                     payload: data,
