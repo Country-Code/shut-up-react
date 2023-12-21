@@ -7,10 +7,23 @@ export default {
         };
         let lastIndexOf_ = actionType.lastIndexOf("_");
         const requestType = actionType.substring(
-            lastIndexOf_ === -1 ? 0 : lastIndexOf_
+            lastIndexOf_ === -1 ? 0 : lastIndexOf_ + 1
         );
-
-        return steps[requestType] ?? "UNKNOWN";
+        console.log(
+            "chatsReducer.request - getRequestStep : lastIndexOf_ : ",
+            lastIndexOf_
+        );
+        console.log(
+            "chatsReducer.request - getRequestStep : actionType : ",
+            actionType
+        );
+        console.log(
+            "chatsReducer.request - getRequestStep : requestType : ",
+            requestType
+        );
+        const step = steps[requestType] ?? "UNKNOWN";
+        console.log("chatsReducer.request - getRequestStep : step : ", step);
+        return step;
     },
     getMethodName: (actionType) => {
         const words = actionType.split("_");
