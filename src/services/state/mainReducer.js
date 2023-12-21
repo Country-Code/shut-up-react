@@ -7,5 +7,6 @@ export default combineReducers({
     auth: authReducer,
     chats: chatsReducer.default,
     chatsRequest: chatsReducer.request,
-    messages: messagesReducer,
+    messages: messagesReducer.default,
+    messagesRequest: messagesReducer.request,
 })

@@ -1,4 +1,3 @@
-import * as actionTypes from "./actionTypes";
 import stateUtil from "../../../utils/state";
 
 export default {
@@ -11,26 +10,32 @@ export default {
         return newState;
     },
     request: (state = {}, action) => {
+        console.log("chatsReducer.request ##############################");
+        console.log("chatsReducer.request : action.type : ", action.type);
+        console.log("chatsReducer.request : action.payload : ", action.payload);
         let newState = { ...state };
         let step = stateUtil.getRequestStep(action.type);
         let methodName = stateUtil.getMethodName(action.type);
-        newState[methodName] = {};
+        console.log("chatsReducer.request : step : ", step);
+        console.log("chatsReducer.request : methodName : ", methodName);
+        if (!newState[methodName]) newState[methodName] = {};
         switch (step) {
-            case "REQUEST":
-                newState[methodName].loading = true;
+            case "start":
+                newState[methodName]["loading"] = true;
                 break;
-            case "SUCCESS":
-                newState[methodName].loading = false;
+            case "success":
+                newState[methodName]["loading"] = false;
                 newState[methodName].data = action.payload;
                 break;
-            case "FAIL":
-                newState[methodName].loading = false;
+            case "fail":
+                newState[methodName]["loading"] = false;
                 newState[methodName].error = action.payload;
                 break;
 
             default:
                 break;
         }
+        console.log("chatsReducer.request : newState : ", newState);
         return newState;
     },
 };
