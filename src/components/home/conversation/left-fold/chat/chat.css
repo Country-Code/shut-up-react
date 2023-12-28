@@ -1,0 +1,35 @@
+.userConversation {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--teams-color);
+    cursor: pointer;
+}
+
+.userConversation:hover {
+    background-color: var(--teams-color);
+    color: white;
+}
+
+.userConversation.active {
+    background-color: var(--teams-item-active);
+    color: white;
+}
+
+.userConversation img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.userConversation span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.userConversation p {
+    font-size: 14px;
+}

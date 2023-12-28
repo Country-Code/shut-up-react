@@ -1,0 +1,4 @@
+{
+    "url": "{{CHAT_URL}}/",
+    "method": "get"
+}

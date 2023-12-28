@@ -1,15 +1,15 @@
 import React from 'react'
-import LeftFold from './left-fold'
-import RightFold from './right-fold'
+import ConversationLeftFold from './left-fold/ConversationLeftFold'
+import ConversationRightFold from './right-fold/ConversationRightFold'
 
 function Conversation() {
     return (
         <>
             <div className='leftFold-container '>
-                <LeftFold />
+                <ConversationLeftFold />
             </div>
             <div className='rightFold-container'>
-                <RightFold />
+                <ConversationRightFold />
             </div>
         </>
     )

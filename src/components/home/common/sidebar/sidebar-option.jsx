@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 function SidebarOption({ option }) {
     const location = useLocation(); 
     const navigate = useNavigate();
-    const isActive = option.path === location.pathname;
+    const isActive = location.pathname.startsWith(option.path);
     const classList = isActive ? "sidebar-option active" : "sidebar-option";
     
     return (

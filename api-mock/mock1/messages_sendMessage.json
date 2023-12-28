@@ -1,0 +1,19 @@
+{
+    "message": {
+        "sender": {
+            "_id": "656295ebf5f388b5d43d423c",
+            "fullname": "user",
+            "email": "user@gmail.com"
+        },
+        "content": "message 1",
+        "chat": {
+            "_id": "65629060b29fb6b267165165",
+            "name": "new group1"
+        },
+        "readBy": ["656295ebf5f388b5d43d423c"],
+        "_id": "6580b5538fb2760a3a19fb3a",
+        "createdAt": "2023-12-18T21:10:43.263Z",
+        "updatedAt": "2023-12-18T21:10:43.263Z",
+        "__v": 0
+    }
+}

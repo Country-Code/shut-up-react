@@ -1,0 +1,8 @@
+{
+    "url": "{{CHAT_URL}}/",
+    "method": "post",
+    "body": {
+        "users": ["655caa3ea27ecd3e52e58089", "655db1febf601c9bce025e3f"],
+        "name": "new group3"
+    }
+}

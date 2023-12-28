@@ -1,0 +1,6 @@
+.messages-list {
+    padding: 10px 20px;
+    flex: 1;
+    min-height: 90%;
+    overflow-y: auto;
+}
