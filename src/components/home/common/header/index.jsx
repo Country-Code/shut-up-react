@@ -16,7 +16,7 @@ function Header() {
             </div>
             <div className='header-rightFold'>
                 <div className='header-search'>
-                    <CiSearch size={30} />
+                    <CiSearch size={20} />
                     <input type="text" placeholder='Search' />
                 </div>
                 <div className='header-profile'>

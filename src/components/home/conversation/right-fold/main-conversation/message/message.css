@@ -5,19 +5,18 @@
 }
 
 .message-content {
-    font-size: 16px;
-    background-color: var(--teams-color-light);
+    background-color: var(--teams-message-recp);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 5px;
     margin-bottom: 15px;
     display: inline-block;
 }
 
 .my-message .message-content {
-    background-color: var(--teams-color);
+    background-color: var(--teams-message-sent);
+    border-radius: 5px 0px 5px 5px;
 }
 
 .my-message {
     text-align: right;
-    color: var(--teams-color-light2);
 }

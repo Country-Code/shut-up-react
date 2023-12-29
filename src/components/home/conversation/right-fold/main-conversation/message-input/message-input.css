@@ -1,38 +1,35 @@
 .message-input-container {
-    display: flex;
-    background-color: var(--teams-color-light);
-    color: var(--teams-color);
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    border: solid 1px var(--teams-color-light1);
-    border-radius: 10px;
-    box-sizing: border-box;
-    max-height: 10%;
-}
-.message-input-container:focus-within {
-    border-bottom: solid 3px var(--teams-color);
+    padding: 0 30px;
+    margin-top: 10px;
 }
 
 .message-input {
+    display: flex;
+    background-color: white;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-input:focus-within {
+    border-bottom: solid 2px var(--teams-color);
+}
+
+.message-input-text {
     flex: 1;
     padding: 10px;
-    height: 100%;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: transparent;
     outline: none;
-    border-radius: 5px;
-    margin-right: 10px;
 }
 
 .message-send-button {
     color: var(--teams-color);
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
+
 .message-send-button:hover .main-icon,
 .message-send-button .onsend-icon {
     display: none;
