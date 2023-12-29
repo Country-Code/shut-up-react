@@ -12,11 +12,7 @@ export default (chatApi) => {
                     payload: data,
                 });
             } catch (error) {
-                api.dispatchError(
-                    dispatch,
-                    actionsType.ADD_USER_FAIL,
-                    error
-                );
+                api.dispatchError(dispatch, actionsType.ADD_USER_FAIL, error);
             }
         },
         createGroup: (users, name) => async (dispatch) => {
@@ -114,6 +110,9 @@ export default (chatApi) => {
                     error
                 );
             }
+        },
+        refreshChats: (chats) => async (dispatch) => {
+            dispatch({ type: actionsType.REFRESH_CHATS, payload: chats });
         },
     };
 };

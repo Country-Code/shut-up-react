@@ -32,8 +32,7 @@ export default function MessagesList() {
         }
     };
 
-    const handleScroll = () => {
-    };
+    const handleScroll = () => {};
 
     return (
         <div

@@ -7,14 +7,6 @@ import MessagesList from "./messages-list/MessagesList";
 import "./main-conversation.css";
 
 export default function MainConversation() {
-    const { id } = useParams();
-    const [messageRequestState, messageRepo] = useRessource(
-        "messages",
-        "Request"
-    );
-    const dispatch = useDispatch();
-    const { getChatMessages = { loading: false, error: null, data: null } } =
-        messageRequestState;
     return (
         <div className="main-conversation">
             <MessagesList />

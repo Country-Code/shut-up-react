@@ -1,7 +1,6 @@
 export default {
-    getAllChats: {
-        error: null,
-        loading: false,
-        data: {},
+    default : {
+        chats: null,
     },
+    request: {},
 };
