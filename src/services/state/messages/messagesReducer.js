@@ -10,14 +10,9 @@ export default {
         return newState;
     },
     request: (state = {}, action) => {
-        console.log("messagesReducer.request ##############################");
-        console.log("messagesReducer.request : action.type : ", action.type);
-        console.log("messagesReducer.request : action.payload : ", action.payload);
         let newState = { ...state };
         let step = stateUtil.getRequestStep(action.type);
         let methodName = stateUtil.getMethodName(action.type);
-        console.log("messagesReducer.request : step : ", step);
-        console.log("messagesReducer.request : methodName : ", methodName);
         if (!newState[methodName]) newState[methodName] = {};
         switch (step) {
             case "start":
@@ -35,7 +30,6 @@ export default {
             default:
                 break;
         }
-        console.log("messagesReducer.request : newState : ", newState);
         return newState;
     },
 };

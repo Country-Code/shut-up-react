@@ -16,12 +16,10 @@ function ResetPassword() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("ResetPassword useEffect authState: ", authState)
         if (error) {
             ErrorMessage.error(error)
             setErrorMessage(error)
         } else if (data.message) {
-            console.log("ResetPassword useEffect data : ", data)
             ErrorMessage.success(data.message)
             navigate("/login");
         }
@@ -29,7 +27,6 @@ function ResetPassword() {
 
     const reset = (e) => {
         e.preventDefault();
-        console.log("ResetPassword reset:")
         dispatch(authRepo.reset(newPassword, token));
 
     }
@@ -70,7 +67,6 @@ function ResetPassword() {
                                         placeholder="••••••••"
                                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                         onChange={(e) => {
-                                            console.log("password changing ...")
                                             setNewPassword(e.target.value);
                                         }}
                                         required

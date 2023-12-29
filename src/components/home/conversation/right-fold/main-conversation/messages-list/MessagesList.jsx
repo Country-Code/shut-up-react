@@ -18,51 +18,21 @@ export default function MessagesList() {
         messageRequestState;
 
     useEffect(() => {
-        console.log("MessagesList.useEffect : ", getChatMessages);
         if (messageRepo && id) {
             dispatch(messageRepo.getChatMessages(id));
         }
     }, [messageRepo, id, getChatMessages]);
     useEffect(() => {
-        console.log(
-            "MessagesList.useEffect : getChatMessages: ",
-            getChatMessages
-        );
         scrollToTop();
     }, [getChatMessages]);
 
     const scrollToTop = () => {
-        console.log(
-            "MessagesList.scrollToTop : messageListRef.current: ",
-            messageListRef.current
-        );
-
         if (messageListRef.current) {
-            console.log(
-                "MessagesList.scrollToTop : messageListRef.current.scrollTop: ",
-                messageListRef.current.scrollTop
-            );
-            console.log(
-                "MessagesList.scrollToTop : messageListRef.current.scrollHeight: ",
-                messageListRef.current.scrollHeight
-            );
             messageListRef.current.scrollTop = 90;
-            console.log(
-                "MessagesList.scrollToTop : messageListRef.current.scrollTop: ",
-                messageListRef.current.scrollTop
-            );
         }
     };
 
     const handleScroll = () => {
-        console.log(
-            "MessagesList.handleScroll : messageListRef.current.scrollTop: ",
-            messageListRef.current.scrollTop
-        );
-        console.log(
-            "MessagesList.handleScroll : messageListRef.current.scrollBottom: ",
-            messageListRef.current.scrollBottom
-        );
     };
 
     return (

@@ -9,7 +9,6 @@ function Home() {
     const location = useLocation();
 
     useEffect(() => {
-        console.log("Home useEffect empty");
         if (!localStorage.getItem('auth-data')) {
             navigate("/login");
         } else if (location.pathname === "/") {

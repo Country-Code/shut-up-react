@@ -10,14 +10,9 @@ export default {
         return newState;
     },
     request: (state = {}, action) => {
-        console.log("chatsReducer.request ##############################");
-        console.log("chatsReducer.request : action.type : ", action.type);
-        console.log("chatsReducer.request : action.payload : ", action.payload);
         let newState = { ...state };
         let step = stateUtil.getRequestStep(action.type);
         let methodName = stateUtil.getMethodName(action.type);
-        console.log("chatsReducer.request : step : ", step);
-        console.log("chatsReducer.request : methodName : ", methodName);
         if (!newState[methodName]) newState[methodName] = {};
         switch (step) {
             case "start":
@@ -35,7 +30,6 @@ export default {
             default:
                 break;
         }
-        console.log("chatsReducer.request : newState : ", newState);
         return newState;
     },
 };

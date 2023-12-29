@@ -7,7 +7,6 @@ const getUserData = () => {
 export default {
     getEmail: () => {
         let userData = getUserData();
-        console.log("user.getEmail : userData : ", userData)
         return userData["email"] ?? ""
     },
 }

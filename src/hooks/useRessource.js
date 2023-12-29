@@ -8,10 +8,8 @@ const useRessource = (ressource, stateType = "") => {
     const state = useSelector(state => state[ressource + stateType])
     useEffect(()=> {
         const ressourceApi = api[ressource]();
-        console.log("ressourceApi : ", ressourceApi)
         setRepo(() => {
             let actions = stateActions[ressource](ressourceApi)
-            console.log("ressourceActions : ", actions)
             return actions
         });
     }, [])

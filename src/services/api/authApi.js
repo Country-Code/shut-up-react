@@ -23,7 +23,6 @@ export default () => {
         },
 
         reset: async (newPassword, resetPasswordToken) => {
-            console.log(`authApi->reset(${newPassword}, ${resetPasswordToken})`)
             const response = await authAxios.post("/reset-password", {
                 newPassword,
                 resetPasswordToken
@@ -32,7 +31,6 @@ export default () => {
         },
 
         forgot: async (email) => {
-            console.log(`authApi->forgot(${email})`)
             const response = await authAxios.post("/password-forgoten", {
                 email
             });

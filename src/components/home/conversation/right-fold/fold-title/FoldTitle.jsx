@@ -8,10 +8,8 @@ export default function FoldTitle() {
     const [chatRequestState, chatRepo] = useRessource("chats", "Request");
     const dispatch = useDispatch();
     const { getChatById = {loading: false, error: null, data: null} } = chatRequestState;
-    console.log("useEffect : ", chatRequestState);
 
     useEffect(() => {
-      console.log("FoldTitle.useEffect : ", getChatById)
         if (chatRepo && id) {
             dispatch(chatRepo.getChatById(id));
         }

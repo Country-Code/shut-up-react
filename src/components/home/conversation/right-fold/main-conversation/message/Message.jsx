@@ -11,8 +11,6 @@ export default function Message({ message }) {
     useEffect(()=>{
         let email = user.getEmail()
         setIsSender(email === message.sender.email)
-        console.log("Message.useEffect : email :", email)
-        console.log("Message.useEffect : message.sender.email :", message.sender.email)
     }, [message]);
 
 

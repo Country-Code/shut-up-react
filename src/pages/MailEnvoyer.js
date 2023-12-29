@@ -13,7 +13,6 @@ function MailEnvoyer(props) {
 
     const forgot = (e) => {
         e.preventDefault();
-        console.log("ResetPassword reset:")
         dispatch(authRepo.forgot(props.email));
 
     }

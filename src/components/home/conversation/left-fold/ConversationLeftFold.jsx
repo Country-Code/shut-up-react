@@ -9,7 +9,6 @@ function ConversationLeftFold() {
     const [chatRequestState, chatRepo] = useRessource("chats", "Request");
     const dispatch = useDispatch();
     const { getAllChats } = chatRequestState;
-    console.log("useEffect : ", chatRequestState)
 
     useEffect(() => {
         if (chatRepo) {
