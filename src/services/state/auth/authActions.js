@@ -2,10 +2,8 @@ import * as actionsType from "./actionTypes";
 import api from "../../api/api";
 
 export default (authApi) => {
-    console.log("AuthActions : ")
     return {
         register: (fullname, email, password) => async (dispatch) => {
-            console.log("auth.register action.");
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
                 const data = await authApi.register(
@@ -26,7 +24,6 @@ export default (authApi) => {
             }
         },
         login: (email, password) => async (dispatch) => {
-            console.log("auth.login action.");
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
                 const data = await authApi.login(email, password);
@@ -43,7 +40,6 @@ export default (authApi) => {
             }
         },
         reset: (newPassword, resetPasswordToken) => async (dispatch) => {
-            console.log(`authApi->reset(${newPassword}, ${resetPasswordToken})`)
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
                 const data = await authApi.reset(newPassword, resetPasswordToken);
@@ -56,7 +52,6 @@ export default (authApi) => {
             }
         },
         forgot: (email) => async (dispatch) => {
-            console.log(`authApi->forgot(${email})`)
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
                 const data = await authApi.forgot(email);
@@ -65,7 +60,6 @@ export default (authApi) => {
                     payload: data,
                 });
             } catch (error) {
-                console.log(`authApi->fogot->error : `, error?.response?.data?.message)
                 dispatch({
                     type: actionsType.AUTH_REQUEST_FAIL,
                     payload: error?.response?.data?.message ?? error.message,

@@ -18,20 +18,17 @@ function PasswordForgoten() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    console.log("ResetPassword useEffect authState: ", authState)
     if (error) {
       ErrorMessage.error(error)
       setErrorMessage(error)
     } else if (data.message) {
       setShow(true)
       ErrorMessage.success(data.message)
-      console.log("ResetPassword useEffect data : ", data)
     }
   }, [authState, data, error]);
 
   const forgot = (e) => {
     e.preventDefault();
-    console.log("ResetPassword reset:")
     dispatch(authRepo.forgot(email));
 
   }

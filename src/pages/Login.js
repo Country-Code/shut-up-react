@@ -7,7 +7,6 @@ import logo from "../assets/img/shutUpLogo.png";
 import ErrorMessage from "../components/ui/ErrorMessage";
 
 function Login() {
-    console.log("Login MOUNT");
     const [password, setPassword] = useState();
     const [email, setEmail] = useState();
 
@@ -21,9 +20,7 @@ function Login() {
     } = authState;
 
     useEffect(() => {
-        console.log("Login useEffect authState: ", authState);
         if (user) {
-            console.log(user);
             navigate("/");
         } else if (error) {
             ErrorMessage.error(error)
