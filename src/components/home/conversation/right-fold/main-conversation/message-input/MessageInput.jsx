@@ -23,10 +23,10 @@ export default function MessageInput() {
         if (sendMessage.data?.message) refreshMessages;
     }, [sendMessage]);
 
-    
+
     const send = () => {
         if (message)
-        dispatch(messageRepo.sendMessage(id, message));
+            dispatch(messageRepo.sendMessage(id, message));
         refreshMessages()
     };
 
@@ -46,20 +46,22 @@ export default function MessageInput() {
 
     return (
         <div className="message-input-container">
-            <input
-                type="text"
-                className="message-input"
-                placeholder="Type your message..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                onKeyPress={handleEnterPress}
-            />
-            <div className="message-send-button" onClick={handleSendClick}>
-                <div className="main-icon">
-                    <VscSend size={32} />
-                </div>
-                <div className="onsend-icon">
-                    <BiSolidSend size={32} />
+            <div className="message-input">
+                <input
+                    type="text"
+                    className="message-input-text"
+                    placeholder="Type your message..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onKeyPress={handleEnterPress}
+                />
+                <div className="message-send-button" onClick={handleSendClick}>
+                    <div className="main-icon">
+                        <VscSend size={20} />
+                    </div>
+                    <div className="onsend-icon">
+                        <BiSolidSend size={20} />
+                    </div>
                 </div>
             </div>
         </div>

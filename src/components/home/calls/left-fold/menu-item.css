@@ -7,7 +7,6 @@
 
 .menu-item:hover .item-icon,
 .menu-item:hover {
-    color: var(--teams-item-active);
     background-color: var(--teams-color-light);
 }
 
@@ -20,5 +19,4 @@
     font-size: 20px;
     margin-right: 12px;
     font-weight: 300;
-    color: var(--teams-gray);
 }

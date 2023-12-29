@@ -3,13 +3,22 @@
 @tailwind utilities;
 
 :root {
-    --teams-color: #464775;
-    --teams-color-light: #e1e1e1;
-    --teams-color-light1: #d5d5e9;
-    --teams-color-light2: #ebebeb;
-    --teams-item-active: #6264a7;
-    --teams-gray: #616161;
+    --teams-color: #8177ea;
+    --teams-item-active: #c0baf5;
+    --teams-color-text: #262737;
+    --teams-message-sent: #dfebf7;
+    --teams-message-recp: #ffebed;
     --teams-gray-light: #f5f5f5;
-    --teams-gray-light2: #d0d0d0;
+    --teams-gray-light2: #f0f0f0;
+    --teams-color-light3: #ebebeb;
     --teams-color-shadow: #dbdbdb;
+
+    --teams-color-light: #f5f5f5;
+    --teams-color-light1: #d5d5e9;
+    --teams-gray: #616161;
+}
+
+body {
+    font-size: 14px;
+    color: var(--teams-color-text);
 }

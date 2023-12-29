@@ -1,10 +1,11 @@
 .header {
     width: 100%;
+    height: 3rem;
     display: flex;
     background-color: var(--teams-color);
     color: white;
     flex: 1;
-    padding: 6px 0;
+    padding: 8px 0;
 }
 
 .header-menu {
@@ -39,7 +40,7 @@
     justify-content: flex-start;
     align-items: center;
     flex: 6;
-    background-color: var(--teams-color-light);
+    background-color: #fff;
     padding: 8px;
     border-radius: 6px;
     color: var(--teams-color);
@@ -49,9 +50,9 @@
     border: none;
     width: 100%;
     font-size: 16px;
-    background-color: var(--teams-color-light);
+    background-color: #fff;
     margin-left: 6px;
-    color: var(--teams-color);
+    color: var(--teams-color-text);
     outline: none;
 }
 
@@ -68,7 +69,8 @@
 }
 
 .header-avatar {
-    height: 40px;
+    width: 35px;
+    height: 35px;
     margin-left: 15px;
     border-radius: 50%;
     background-color: var(--teams-color-light);

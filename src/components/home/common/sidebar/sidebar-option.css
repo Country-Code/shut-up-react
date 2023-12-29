@@ -10,16 +10,16 @@
 }
 
 .sidebar-option.active {
-    border-left: 4px solid var(--teams-item-active);
+    border-left: 4px solid var(--teams-color);
 }
 
 .sidebar-option:hover,
 .sidebar-option.active {
-    color: var(--teams-item-active);
+    color: var(--teams-color);
 }
 
 .sidebar-option-icon {
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 600;
 }
 

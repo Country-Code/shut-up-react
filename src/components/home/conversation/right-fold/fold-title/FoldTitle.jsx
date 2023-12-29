@@ -7,11 +7,11 @@ export default function FoldTitle() {
     const { id } = useParams();
     const [chatRequestState, chatRepo] = useRessource("chats", "Request");
     const dispatch = useDispatch();
-    const { getChatById = {loading: false, error: null, data: null} } = chatRequestState;
+    const { getChatById = { loading: false, error: null, data: null } } = chatRequestState;
     console.log("useEffect : ", chatRequestState);
 
     useEffect(() => {
-      console.log("FoldTitle.useEffect : ", getChatById)
+        console.log("FoldTitle.useEffect : ", getChatById)
         if (chatRepo && id) {
             dispatch(chatRepo.getChatById(id));
         }
@@ -23,7 +23,11 @@ export default function FoldTitle() {
                 <>Error : {getChatById.error}</>
             )}
             {!getChatById.loading && !getChatById.error && getChatById.data && (
-                <>{getChatById.data.chat?.name}</>
+                <>
+                    <div className="ConversationTitle">
+                        <img src="https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg" alt="" />
+                        <span>{getChatById.data.chat?.name}</span></div>
+                </>
             )}
             {!getChatById.loading && !getChatById.error && !getChatById.data && (
                 <>Conversation</>

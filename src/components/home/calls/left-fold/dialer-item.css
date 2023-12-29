@@ -23,9 +23,6 @@
     font-weight: 500;
 }
 
-.dialer-item-type {
-color: var(--teams-gray);
-}
 
 .dialer-item-icons {
     display: flex;
