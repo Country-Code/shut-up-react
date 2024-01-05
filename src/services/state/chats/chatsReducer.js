@@ -1,9 +1,13 @@
 import stateUtil from "../../../utils/state";
+import * as actionTypes from "./actionTypes";
 
 export default {
     default: (state = {}, action) => {
         let newState = { ...state };
         switch (action.type) {
+            case actionTypes.REFRESH_CHATS:
+                newState.chats = action.payload;
+                break;
             default:
                 break;
         }
