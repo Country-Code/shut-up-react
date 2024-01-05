@@ -1,35 +1,92 @@
 .userConversation {
-    padding: 10px;
-    width: 100%;
+    width: 96%;
+    align-items: flex-start;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 3rem;
+    margin: 0 0.4rem;
+    border-radius: 0.4rem;
+}
+
+.ConversationTitle {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--teams-color);
-    cursor: pointer;
+    line-height: 0;
+    text-transform: capitalize;
+}
+
+.userConversationInfo-container {
+    display: grid;
+    padding: 0 1rem;
+    grid-template-columns: 1.8rem 8rem auto auto auto;
+    grid-template-rows: 1.5rem 1.5rem;
+    align-items: center;
 }
 
 .userConversation:hover {
-    background-color: var(--teams-color);
-    color: white;
+    background-color: white;
 }
 
 .userConversation.active {
-    background-color: var(--teams-item-active);
-    color: white;
+    background-color: white;
+}
+
+.userConversationInfo-img {
+    grid-row: 1/3;
+    grid-column: 1;
+}
+
+.userConversationInfo-name {
+    grid-row: 1;
+    grid-column: 2/4;
+    text-align: left;
+    margin-left: 8px;
+}
+
+.userConversationInfo-date {
+    grid-column: 5;
+    grid-row: 1;
+    text-align: end;
+}
+
+.userConversationInfo-message p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.userConversationInfo-message {
+    grid-column: 2/5;
+    grid-row: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: 8px;
 }
 
 .userConversation img {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
+    margin-right: 10px;
+}
+
+.ConversationTitle img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
 }
 
 .userConversation span {
-    font-size: 18px;
     font-weight: 500;
 }
 
-.userConversation p {
-    font-size: 14px;
+.userConversationInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

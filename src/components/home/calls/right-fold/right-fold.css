@@ -1,10 +1,9 @@
 .rightFold-heading {
-padding: 0 0 12px;
-border-bottom: 2px solid var(--teams-gray-light);
+    padding: 0 0 12px;
+    border-bottom: 2px solid var(--teams-gray-light);
 }
 
 .heading-label {
-    font-size: 24px;
     font-weight: 500;
 }
 
@@ -17,7 +16,6 @@ border-bottom: 2px solid var(--teams-gray-light);
 .add-button {
     background-color: var(--teams-item-active);
     width: fit-content;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;

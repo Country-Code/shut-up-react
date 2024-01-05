@@ -1,13 +1,9 @@
-
 .leftFold-menu {
     height: 47%;
 }
 
 .leftFold-dialer {
-    /* padding: 16px; */
-    /* background-color: white; */
     height: 47%;
-    /* position: relative; */
 }
 
 .menu-items {
@@ -16,7 +12,6 @@
 
 .dialer-label {
     font-weight: 600;
-    color: var(--teams-gray);
     font-size: 20px;
 }
 
@@ -40,7 +35,6 @@
 .suggested-label {
     font-size: 16px;
     font-weight: 400;
-    color: var(--teams-gray);
 }
 
 .suggested-list {

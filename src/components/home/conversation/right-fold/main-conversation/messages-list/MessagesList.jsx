@@ -53,7 +53,7 @@ export default function MessagesList() {
                 ))}
             {!getChatMessages.loading &&
                 !getChatMessages.error &&
-                !getChatMessages.data && <>Conversation</>}
+                !getChatMessages.data && <><h1>You start a new conversation</h1><p>Type your first message below.</p></>}
         </div>
     );
 }
