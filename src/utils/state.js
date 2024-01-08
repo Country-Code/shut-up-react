@@ -1,5 +1,5 @@
 export default {
-    getRequestStep: (actionType) => {
+    getRequestStep: (actionType, ressource) => {
         const steps = {
             REQUEST: "start",
             SUCCESS: "success",
@@ -9,6 +9,7 @@ export default {
         const requestType = actionType.substring(
             lastIndexOf_ === -1 ? 0 : lastIndexOf_ + 1
         );
+        if (!actionType.startsWith(ressource.toUpperCase())) return "UNKNOWN";
         const step = steps[requestType] ?? "UNKNOWN";
         return step;
     },
@@ -16,7 +17,7 @@ export default {
         const words = actionType.split("_");
 
         return words
-            .slice(0, -1)
+            .slice(1, -1)
             .map((word, index) => {
                 if (index === 0) {
                     return word.toLowerCase();

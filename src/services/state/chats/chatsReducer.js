@@ -5,7 +5,7 @@ export default {
     default: (state = {}, action) => {
         let newState = { ...state };
         switch (action.type) {
-            case actionTypes.REFRESH_CHATS:
+            case actionTypes.CHATS_REFRESH_CHATS:
                 newState.chats = action.payload;
                 break;
             default:
@@ -15,7 +15,8 @@ export default {
     },
     request: (state = {}, action) => {
         let newState = { ...state };
-        let step = stateUtil.getRequestStep(action.type);
+        let step = stateUtil.getRequestStep(action.type, "chats");
+        if (step === "UNKNOWN") return newState;
         let methodName = stateUtil.getMethodName(action.type);
         if (!newState[methodName]) newState[methodName] = {};
         switch (step) {

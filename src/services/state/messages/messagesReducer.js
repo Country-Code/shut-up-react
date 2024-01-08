@@ -11,7 +11,8 @@ export default {
     },
     request: (state = {}, action) => {
         let newState = { ...state };
-        let step = stateUtil.getRequestStep(action.type);
+        let step = stateUtil.getRequestStep(action.type, "messages");
+        if (step === "UNKNOWN") return newState;
         let methodName = stateUtil.getMethodName(action.type);
         if (!newState[methodName]) newState[methodName] = {};
         switch (step) {
