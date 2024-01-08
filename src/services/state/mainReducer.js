@@ -9,4 +9,5 @@ export default combineReducers({
     chatsRequest: chatsReducer.request,
     messages: messagesReducer.default,
     messagesRequest: messagesReducer.request,
-})
+    socket: socketReducer,
+});

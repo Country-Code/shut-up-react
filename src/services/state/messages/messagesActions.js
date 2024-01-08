@@ -1,4 +1,6 @@
 import * as actionsType from "./actionTypes";
+import * as socketActionsType from "../socket/actionTypes";
+
 import api from "../../api/api";
 
 export default (messagesApi) => {
@@ -10,6 +12,14 @@ export default (messagesApi) => {
                 dispatch({
                     type: actionsType.MESSAGES_SEND_MESSAGE_SUCCESS,
                     payload: data,
+                });
+                dispatch({
+                    type: actionsType.MESSAGES_ADD_MESSAGE,
+                    payload: {id: chatId, message: data.message},
+                });
+                dispatch({
+                    type: socketActionsType.SOCKET_EMIT_NEW_MESSAGE,
+                    payload: {message: data.message},
                 });
             } catch (error) {
                 api.dispatchError(
