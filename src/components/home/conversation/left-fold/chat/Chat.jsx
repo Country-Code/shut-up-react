@@ -26,7 +26,7 @@ export default function Chat({ chat }) {
                     <span>{chat.name}</span>
                 </div>
                 <div className='userConversationInfo-date'>
-                    {date.getMessageDate(chat.lastMessage.createdAt)}
+                    {date.getMessageDate(chat.lastMessage?.createdAt)}
                 </div>
                 <div className='userConversationInfo-message'>
                     <p className='text-left'>{chat.lastMessage?.content}</p>
