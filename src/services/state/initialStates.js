@@ -6,5 +6,6 @@ export default {
     auth: authState,
     chatsRequest: chatsState.request,
     chats: chatsState.default,
-    messages: messagesState,
+    messagesRequest: messagesState.request,
+    messages: messagesState.default,
 };

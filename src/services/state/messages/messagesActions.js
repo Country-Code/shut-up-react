@@ -51,5 +51,17 @@ export default (messagesApi) => {
                 );
             }
         },
+        fitMessagesList: (id, messagesList) => (dispatch) => {
+            dispatch({
+                type: actionsType.MESSAGES_FIT_MESSAGES_LIST,
+                payload: {id, messagesList},
+            });
+        },
+        addMessageToList: (id, message) => (dispatch) => {
+            dispatch({
+                type: actionsType.MESSAGES_ADD_MESSAGE,
+                payload: {id, message},
+            });
+        },
     };
 };
