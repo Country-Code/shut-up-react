@@ -1,37 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./message-input.css";
 import { VscSend } from "react-icons/vsc";
 import { BiSolidSend } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import useRessource from "../../../../../../hooks/useRessource";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MessageInput() {
     const [message, setMessage] = useState("");
+    const [isRecieveMessageOn, setIsRecieveMessageOn] = useState(false);
     const { id } = useParams();
-    const [messageRequestState, messageRepo] = useRessource(
+    const [messagesRequestState, messageRepo] = useRessource(
         "messages",
         "Request"
     );
+    const socketState = useSelector((state) => state.socket);
     const dispatch = useDispatch();
     const { sendMessage = { loading: false, error: null, data: null } } =
-        messageRequestState;
+        messagesRequestState;
+
+    useEffect(() => {
+        if (socketState?.socket && messageRepo && !isRecieveMessageOn) {
+            setIsRecieveMessageOn((oldState) => {
+                if (!oldState)
+                    socketState.socket.on("recieve_message", (message) => {
+                        dispatch(
+                            messageRepo.addMessageToList(
+                                message.chat?._id,
+                                message
+                            )
+                        );
+                    });
+                return true;
+            });
+        }
+    }, [socketState, messageRepo]);
 
     useEffect(() => {
         if (sendMessage.error) alert(`ERROR : ${sendMessage.error}`);
-        if (sendMessage.data?.message) refreshMessages;
+        if (sendMessage.data?.message) setMessage("");
     }, [sendMessage]);
 
-
     const send = () => {
-        if (message)
+        if (message) {
             dispatch(messageRepo.sendMessage(id, message));
-        refreshMessages()
-    };
-
-    const refreshMessages = () => {
-        dispatch(messageRepo.getChatMessages(id));
+            setMessage("");
+        }
     };
 
     const handleSendClick = () => {
