@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Calls from "./components/home/calls";
@@ -11,8 +11,13 @@ import NotFound from "./pages/NotFound";
 import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import "./styles.css";
+import socketActions from "./services/state/socket/socketActions";
 
 function App() {
+    useEffect(() => {
+        socketActions.connect();
+    }, []);
+
     return (
         <>
             <BrowserRouter>
