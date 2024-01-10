@@ -5,8 +5,11 @@ import { useParams } from "react-router-dom";
 import useRessource from "../../../../../../hooks/useRessource";
 import Loading from "../../../../../ui/Loading";
 import "./messages-list.css";
+import logger from "../../../../../../utils/logger";
 
 export default function MessagesList() {
+    const keyWord = "MessageListComp";
+    logger.log({ data: keyWord.repeat(20) + "calling", keyWord });
     const { id } = useParams();
     const [messagesList, setMessagesList] = useState(null);
     const [messagesRequestState, messageRepo] = useRessource(
@@ -21,23 +24,53 @@ export default function MessagesList() {
         messagesRequestState;
 
     useEffect(() => {
-        if (messageRepo && id) {
+        logger.log({ data: id, keyWord, title: "id" });
+    }, [id]);
+    useEffect(() => {
+        logger.log({ data: messagesList, keyWord, title: "messagesList" });
+    }, [messagesList]);
+    useEffect(() => {
+        logger.log({
+            data: messagesRequestState,
+            keyWord,
+            title: "messagesRequestState",
+        });
+        if (messagesRequestState?.getChatMessages)
+            logger.log({
+                data: messagesRequestState?.getChatMessages,
+                keyWord,
+                title: "messagesRequestState.getChatMessages",
+            });
+        if (messagesRequestState?.getChatMessages?.data)
+            logger.log({
+                data: messagesRequestState?.getChatMessages?.data,
+                keyWord,
+                title: "messagesRequestState.getChatMessages?.data",
+            });
+    }, [messagesRequestState]);
+    useEffect(() => {
+        logger.log({
+            data: messagesState,
+            keyWord,
+            title: "messagesState",
+        });
+    }, [messagesState]);
+    useEffect(() => {
+        logger.log({
+            data: getChatMessages,
+            keyWord,
+            title: "getChatMessages",
+        });
+    }, [getChatMessages]);
+
+    useEffect(() => {
+        if (messageRepo && id && !messagesState[id]) {
             dispatch(messageRepo.getChatMessages(id));
         }
     }, [messageRepo, id]);
 
     useEffect(() => {
         const messagesListData = messagesState[id] ?? null;
-        if (
-            messageRepo &&
-            messagesListData === null &&
-            getChatMessages.data?.messages &&
-            id
-        ) {
-            dispatch(
-                messageRepo.fitMessagesList(id, getChatMessages.data?.messages)
-            );
-        }
 
         if (messagesListData !== null) {
             setMessagesList(getMessagesList(messagesListData));
@@ -63,7 +96,15 @@ export default function MessagesList() {
                 </>
             );
         }
-    }, [messagesRequestState]);
+    }, [getChatMessages, messagesState, id]);
+
+    useEffect(() => {
+        if (!getChatMessages.loading && getChatMessages.data && messageRepo) {
+            dispatch(
+                messageRepo.fitMessagesList(id, getChatMessages.data?.messages)
+            );
+        }
+    }, [getChatMessages.loading]);
 
     const getMessagesList = (messages) => {
         return messages
