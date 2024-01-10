@@ -1,14 +1,17 @@
 import stateUtil from "../../../utils/state";
 import * as actionsType from "./actionTypes";
+import logger from "../../../utils/logger";
 
 export default {
     default: (state = {}, action) => {
         let newState = { ...state };
+        const keyWord = "MessageReducerDefault";
         switch (action.type) {
             case actionsType.MESSAGES_FIT_MESSAGES_LIST:
                 newState[action.payload.id] = action.payload.messagesList;
                 break;
             case actionsType.MESSAGES_ADD_MESSAGE:
+                logger.log({ data: action.payload, keyWord });
                 newState[action.payload.id] = [
                     ...newState[action.payload.id],
                     action.payload.message,
