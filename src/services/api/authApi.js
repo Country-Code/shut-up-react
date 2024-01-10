@@ -1,6 +1,5 @@
 import apiTools from "../../utils/api";
 
-
 export default () => {
     const authAxios = apiTools.getAxios("auth");
 
@@ -25,14 +24,14 @@ export default () => {
         reset: async (newPassword, resetPasswordToken) => {
             const response = await authAxios.post("/reset-password", {
                 newPassword,
-                resetPasswordToken
+                resetPasswordToken,
             });
             return response.data;
         },
 
         forgot: async (email) => {
             const response = await authAxios.post("/password-forgoten", {
-                email
+                email,
             });
             return response.data;
         },

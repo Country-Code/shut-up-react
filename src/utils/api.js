@@ -8,12 +8,12 @@ export default {
         };
         const token = localStorage.getItem("token");
         if (token) {
-            headers.Authorization = `Bearer ${token}`
+            headers.Authorization = `Bearer ${token}`;
         }
 
         return axios.create({
             baseURL: baseUrl + "/api/" + ressource,
             headers,
         });
-    }
-}
+    },
+};
