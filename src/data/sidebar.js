@@ -13,10 +13,10 @@ export const SidebarData = [
         icon: <BiMessageRoundedDetail />,
         path: "/conversation"
     },
-    {
-        id: 3,
-        name: 'Calls',
-        icon: <BiPhone />,
-        path: "/calls"
-    },
+    // {
+    //     id: 3,
+    //     name: 'Calls',
+    //     icon: <BiPhone />,
+    //     path: "/calls"
+    // },
 ]

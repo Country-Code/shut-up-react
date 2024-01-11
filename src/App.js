@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Calls from "./components/home/calls";
 import Conversation from "./components/home/conversation/Conversation";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -13,6 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "./styles.css";
 import socketActions from "./services/state/socket/socketActions";
 
+const Calls = lazy(()=> import("./components/home/calls"));
+
 function App() {
     useEffect(() => {
         socketActions.connect();
@@ -23,8 +24,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />}>
-                        <Route index element={<Calls />} />
-                        <Route path="/calls" element={<Calls />} />
+                        <Route index element={<Conversation />} />
+                        {/* <Route path="/calls" element={<Calls />} /> */}
                         <Route path="/conversation/" element={<Conversation />}>
                             <Route path=":id" element={<Conversation />} />
                         </Route>
