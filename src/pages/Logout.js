@@ -3,13 +3,12 @@ import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 function Logout() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [authState, authRepo] = useRessource("auth");
     useEffect(() => {
-        if(authState.data.token === null){
+        if (authState.data.token === null) {
             console.log("Successfully Disconnected");
             navigate("/login");
         }
@@ -21,7 +20,10 @@ function Logout() {
     };
     return (
         <div>
-            <button onClick={handleDeconnect}>Disconnect</button>
+            <div className="border-t border-gray-300"></div>
+            <button className="dropdown-item" onClick={handleDeconnect}>
+                Disconnect
+            </button>
         </div>
     );
 }
