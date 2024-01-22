@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Logout from "./Logout";
-import "../assets/css/pages/drop-down-menu.css";
+import Disconnect from "./Disconnect";
+import "../../../../../assets/css/header/profile-actions.css";
 
-function DropDownMenu() {
+function ProfileActions() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -13,7 +13,6 @@ function DropDownMenu() {
         <div className="relative">
             <button onClick={toggleMenu} className="dropdown-button">
                 <img className="header-avatar" src="avatar1.png" />
-                <span>{menuOpen ? "▲" : "▼"}</span>
             </button>
             {menuOpen && (
                 <div className="dropdown-menu">
@@ -27,11 +26,11 @@ function DropDownMenu() {
                     <button  className="dropdown-item">
                         Option 3
                     </button>
-                    <Logout />
+                    <Disconnect />
                 </div>
             )}
         </div>
     );
 }
 
-export default DropDownMenu;
+export default ProfileActions;

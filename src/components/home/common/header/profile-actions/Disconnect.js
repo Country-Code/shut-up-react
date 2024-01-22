@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useRessource from "../../../../../hooks/useRessource";
 
-function Logout() {
+function Disconnect() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [authState, authRepo] = useRessource("auth");
@@ -14,18 +14,18 @@ function Logout() {
         }
     }, [authState, navigate]);
 
-    const handleDeconnect = () => {
+    const handleDisconnect = () => {
         console.log("Deconnect Button Clicked");
         dispatch(authRepo.logout());
     };
     return (
         <div>
             <div className="border-t border-gray-300"></div>
-            <button className="dropdown-item" onClick={handleDeconnect}>
+            <button className="dropdown-item" onClick={handleDisconnect}>
                 Disconnect
             </button>
         </div>
     );
 }
 
-export default Logout;
+export default Disconnect;
