@@ -12,7 +12,7 @@ function Home() {
         if (!localStorage.getItem('auth-data')) {
             navigate("/login");
         } else if (location.pathname === "/") {
-            navigate("/calls");
+            navigate("/conversation");
         }
     }, []);
 

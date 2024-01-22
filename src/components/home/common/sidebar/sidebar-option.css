@@ -9,8 +9,14 @@
     cursor: pointer;
 }
 
-.sidebar-option.active {
-    border-left: 4px solid var(--teams-color);
+.sidebar-option.active::before {
+    height: 3.8rem;
+    position: absolute;
+    border-left: solid 2px var(--teams-color);
+    border-radius: 0.4rem;
+    background: var(--teams-color);
+    content: "";
+    left: 0.2rem;
 }
 
 .sidebar-option:hover,

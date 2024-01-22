@@ -7,16 +7,18 @@
 .messages-list .new-message-info.hidden {
     display: none;
 }
+
 .messages-list .new-message-info {
-    display: flex;
-    width: 200px;
+    background-color: #5b5fc7;
+    color: white;
+    padding: 5px 10px;
     height: 30px;
+    display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     bottom: 80px;
-    right: 50%;
+    right: 7.5rem;
+    border-radius: 4px;
     transform: translate(50%, 50%);
-    background-color: var(--teams-color);
-    padding: auto;
 }
