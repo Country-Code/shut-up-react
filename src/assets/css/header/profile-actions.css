@@ -1,12 +1,12 @@
 .dropdown-button {
   display: flex;
-  background-color: #8177ea;
   color: #ffffff;
   border-radius: 0.25rem;
   cursor: pointer;
 }
 
 .dropdown-menu {
+  z-index: 1;
   position: absolute;
   right: 0;
   margin-top: 0.5rem;
@@ -28,6 +28,6 @@
 }
 
 .dropdown-item:hover {
-  background-color: #8177ea;
-  color: #ffffff;
+  background-color: var(--teams-gray-hover);
+  color: #252423;
 }
