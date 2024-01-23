@@ -67,11 +67,14 @@ export default (authApi) => {
             }
         },
         logout: () => (dispatch) => {
+            console.log("Logout");
+            // @TODO is calling /logout mandatory ???
             localStorage.removeItem("auth-data");
+            localStorage.removeItem("token");
             dispatch({
                 type: actionsType.AUTH_LOGOUT,
+                payload: { token: null, user: null },
             });
-            document.location.href = "/login";
         },
     };
 };

@@ -15,6 +15,7 @@ export default (state = {}, action) => {
             newState.error = action.payload;
             break;
         case actionTypes.AUTH_LOGOUT:
+            newState.data = action.payload;
             break;
 
         default:

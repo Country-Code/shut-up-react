@@ -2,6 +2,7 @@ import React from 'react'
 import "./header.css"
 import { CiGrid42, CiSearch } from "react-icons/ci";
 import { SlOptions } from "react-icons/sl";
+import ProfileActions from './profile-actions/ProfileActions';
 
 function Header() {
     return (
@@ -23,7 +24,7 @@ function Header() {
                     <div className='header-options'>
                         <SlOptions />
                     </div>
-                    <img className='header-avatar' src='avatar1.png' />
+                    <ProfileActions/>
                 </div>
             </div>
         </div>
