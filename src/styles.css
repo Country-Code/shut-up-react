@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* #5b5fc7 */
 :root {
-    --teams-color: #8177ea;
+    --teams-color: #444791;
     --teams-item-active: #c0baf5;
     --teams-color-text: #262737;
-    --teams-message-sent: #dfebf7;
-    --teams-message-recp: #ffebed;
+    --teams-message-sent: #E8EBFA;
+    --teams-message-recp: #fff;
     --teams-gray-light: #f5f5f5;
     --teams-gray-light2: #f0f0f0;
     --teams-color-light3: #ebebeb;

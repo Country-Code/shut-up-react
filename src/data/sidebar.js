@@ -17,6 +17,6 @@ export const SidebarData = [
         id: 3,
         name: 'Calls',
         icon: <BiPhone />,
-        path: "/calls"
+        path: "#"
     },
 ]
