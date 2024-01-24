@@ -8,6 +8,15 @@ export default {
             case actionTypes.CHATS_REFRESH_CHATS:
                 newState.chats = action.payload;
                 break;
+            case actionTypes.CHATS_REFRESH_NEW_MESSAGE:
+                newState.chats = newState.chats.map((chat) => {
+                    if (chat._id === action.payload.id) {
+                        chat.lastMessage = action.payload.message;
+                        chat.updatedAt = action.payload.message.createdAt;
+                    }
+                    return chat;
+                })
+                break;
             default:
                 break;
         }
