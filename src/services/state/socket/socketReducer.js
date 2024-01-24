@@ -6,20 +6,23 @@ export default (state = {}, action) => {
     // console.log("socketReducer state :", state);
     // console.log("socketReducer action :", action);
     let newState = { ...state };
-    let user, socket, authData;
-    if (Object.keys(newState).includes("isConnected") && !newState?.isConnected && !newState?.socket) {
-        socket = io(baseUrl);
-        authData = localStorage.getItem("auth-data")
-            ? JSON.parse(localStorage.getItem("auth-data"))
-            : null;
-        user = authData?.user;
-        socket.emit("init_connection", user);
-        socket.on("connected", () => {
-            console.log("socketReducer.connected");
-        });
-        newState.socket = socket;
-        newState.idSocket = Math.floor(Math.random() * 100);
-        newState.isConnected = true;
+    if (newState.isInitialStateOk) {
+        if (!newState?.user && localStorage.getItem("auth-data")) {
+            console.log("socketReducer.setUser in progress");
+            let authData = JSON.parse(localStorage.getItem("auth-data"));
+            newState.user = authData?.user;
+        }
+        if (newState?.user && !newState?.socket) {
+            console.log("socketReducer.setSocket in progress");
+            let socket = io(baseUrl);
+            newState.idSocket = Math.floor(Math.random() * 100);
+            newState.socket = socket;
+            socket.emit("init_connection", newState.user);
+            socket.on("connected", () => {
+                console.log("socketReducer.connected");
+            });
+            console.log("socketReducer.connection with data: ", newState.user);
+        }
     }
 
     switch (action.type) {
@@ -29,5 +32,6 @@ export default (state = {}, action) => {
         default:
             break;
     }
+    // console.log("socketReducer " + "#".repeat(20));
     return newState;
 };

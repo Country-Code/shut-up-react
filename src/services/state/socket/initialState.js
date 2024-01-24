@@ -1,3 +1,3 @@
 export default {
-    isConnected: false,
+    isInitialStateOk: true,
 };
