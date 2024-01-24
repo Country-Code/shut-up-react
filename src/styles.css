@@ -5,6 +5,7 @@
 /* #5b5fc7 */
 :root {
     --teams-color: #444791;
+    --teams-gray-hover: #f0f0f0;
     --teams-item-active: #c0baf5;
     --teams-color-text: #262737;
     --teams-message-sent: #E8EBFA;
