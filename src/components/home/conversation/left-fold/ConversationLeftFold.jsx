@@ -24,7 +24,7 @@ function ConversationLeftFold() {
         }
 
         if (chats != null) {
-            setChatsList(getChatsList(chats));
+            return;
         } else if (!getAllChats?.loading && getAllChats?.error) {
             setChatsList(<div>Error : {getAllChats.error}</div>);
         } else if (!getAllChats?.loading && getAllChats?.data?.chats) {
@@ -32,13 +32,21 @@ function ConversationLeftFold() {
         } else if (getAllChats?.loading) {
             setChatsList(<Loading />);
         }
-    }, [chats, getAllChats?.loading]);
+    }, [getAllChats?.loading]);
+    useEffect(() => {
+        if (chats != null) {
+            setChatsList(getChatsList(chats));
+        }
+    }, [chats]);
 
     const getChatsList = (chatsItems) => {
         return chatsItems
-            .toSorted((a, b) => b.updatedAt - a.updatedAt)
+            .sort((a, b) => {
+                return new Date(b.updatedAt) - new Date(a.updatedAt);
+            })
             .map((chat) => <Chat key={chat._id} chat={chat} />);
     };
+
     return (
         <div className="leftFold conversation-left-fold">
             <div className="fold-title">Conversations</div>

@@ -1,4 +1,5 @@
 import * as actionsType from "./actionTypes";
+import * as chatsActionsType from "../chats/actionTypes";
 import * as socketActionsType from "../socket/actionTypes";
 
 import api from "../../api/api";
@@ -15,6 +16,10 @@ export default (messagesApi) => {
                 });
                 dispatch({
                     type: actionsType.MESSAGES_ADD_MESSAGE,
+                    payload: {id: chatId, message: data.message},
+                });
+                dispatch({
+                    type: chatsActionsType.CHATS_REFRESH_NEW_MESSAGE,
                     payload: {id: chatId, message: data.message},
                 });
                 dispatch({
@@ -70,6 +75,10 @@ export default (messagesApi) => {
         addMessageToList: (id, message) => (dispatch) => {
             dispatch({
                 type: actionsType.MESSAGES_ADD_MESSAGE,
+                payload: {id, message},
+            });
+            dispatch({
+                type: chatsActionsType.CHATS_REFRESH_NEW_MESSAGE,
                 payload: {id, message},
             });
         },
