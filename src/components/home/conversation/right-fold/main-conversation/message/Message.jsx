@@ -17,10 +17,8 @@ export default function Message({ message }) {
     return (
         <div className={classList} >
             <div className="message-date">
-                {isSender && "You"}
-                {!isSender && message.sender.fullname}
-                -{" "}
-                {date.getConversationDate(message.createdAt)}
+                {!isSender && `${message.sender.fullname}${" "}`}
+                {date.getMessageDate(message.createdAt)}
             </div>
             <div className="message-content">{message.content}</div>
         </div>
