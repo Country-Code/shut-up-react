@@ -147,8 +147,7 @@ export default function MessagesList() {
     };
     const scrollBottom = () => {
         const messageListDiv = messageListRef.current;
-        messageListDiv.scrollTop =
-            messageListDiv.scrollHeight - messageListDiv.clientHeight;
+        messageListDiv.scrollTop = messageListDiv.scrollHeight;
     };
     return (
         <div
