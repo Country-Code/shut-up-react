@@ -11,12 +11,10 @@ import NotFound from "./pages/NotFound";
 import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
 import "./styles.css";
-import socketActions from "./services/state/socket/socketActions";
+import useSocket from "./hooks/useSocket";
 
 function App() {
-    useEffect(() => {
-        socketActions.connect();
-    }, []);
+    useSocket();
 
     return (
         <>
