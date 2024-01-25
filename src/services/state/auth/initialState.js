@@ -3,7 +3,6 @@ const authData = localStorage.getItem("auth-data")
     : null;
 
 export default {
-    data: {
-        user: authData?.user
-    },
+    data: {},
+    user: authData?.user,
 };

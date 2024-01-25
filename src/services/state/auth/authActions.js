@@ -25,10 +25,10 @@ export default (authApi) => {
         },
         login: (email, password) => async (dispatch) => {
             try {
-                dispatch({ type: actionsType.AUTH_REQUEST });
+                dispatch({ type: actionsType.AUTH_LOGIN_REQUEST });
                 const data = await authApi.login(email, password);
                 dispatch({
-                    type: actionsType.AUTH_REQUEST_SUCCESS,
+                    type: actionsType.AUTH_LOGIN_SUCCESS,
                     payload: data,
                 });
                 localStorage.setItem("auth-data", JSON.stringify(data));
@@ -36,7 +36,7 @@ export default (authApi) => {
                     localStorage.setItem("token", data.token);
                 }
             } catch (error) {
-                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
+                api.dispatchError(dispatch, actionsType.AUTH_LOGIN_FAIL, error);
             }
         },
         reset: (newPassword, resetPasswordToken) => async (dispatch) => {
