@@ -19,8 +19,13 @@ function ConversationLeftFold() {
         }
     }, [chatRepo]);
     useEffect(() => {
-        if (getAllChats?.data?.chats && chatRepo) {
+        if (getAllChats?.data?.chats && chatRepo && chats === null) {
             dispatch(chatRepo.refreshChats(getAllChats?.data?.chats));
+           
+            const listChatsSortedByUpdatedAt = getAllChats?.data?.chats.sort((a, b) => {
+                return new Date(b.updatedAt) - new Date(a.updatedAt);
+            })
+            dispatch(chatRepo.setIdActiveChat(listChatsSortedByUpdatedAt[0]?._id));
         }
 
         if (chats != null) {
