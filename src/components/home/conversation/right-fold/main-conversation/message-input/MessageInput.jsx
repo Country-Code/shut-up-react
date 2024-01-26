@@ -5,9 +5,11 @@ import { BiSolidSend } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import useRessource from "../../../../../../hooks/useRessource";
 import { useDispatch, useSelector } from "react-redux";
+import MessageInfo from "../message-info/MessageInfo";
 
 export default function MessageInput() {
     const [message, setMessage] = useState("");
+    const [messageInfo, setMessageInfo] = useState(false);
     const [isRecieveMessageOn, setIsRecieveMessageOn] = useState(false);
     const { id } = useParams();
     const [messagesRequestState, messageRepo] = useRessource(
@@ -45,6 +47,9 @@ export default function MessageInput() {
         if (message) {
             dispatch(messageRepo.sendMessage(id, message));
             setMessage("");
+        } else {
+            setMessageInfo(true);
+            setTimeout(() => { setMessageInfo(false); }, 2000);
         }
     };
 
@@ -60,6 +65,7 @@ export default function MessageInput() {
 
     return (
         <div className="message-input-container">
+            <div className='message-info-container'>{messageInfo ? <MessageInfo /> : null}</div>
             <div className="message-input">
                 <input
                     type="text"
