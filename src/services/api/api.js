@@ -1,6 +1,7 @@
 import authApi from "./authApi";
 import chatsApi from "./chatsApi";
 import messagesApi from "./messagesApi";
+import searchApi from "./searchApi";
 
 const apiErrorCodes = {
     AUTH_REGISTER_FIELDS_MISSED: "Please fill all required fields!",
@@ -37,6 +38,7 @@ export default {
     auth: authApi,
     chats: chatsApi,
     messages: messagesApi,
+    search : searchApi,
     dispatchError: (dispatch, type, error) => {
         let err = error?.response?.data ?? error;
         const errorCode = err.code;
