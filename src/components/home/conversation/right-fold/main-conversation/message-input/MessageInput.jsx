@@ -40,7 +40,7 @@ export default function MessageInput() {
 
     useEffect(() => {
         // if user is typing
-        if (message !== "" && user) {
+        if (activeChat) {
             // send typing event
             socket.emit("typing", {
                 chat: activeChat,
@@ -50,11 +50,12 @@ export default function MessageInput() {
         }
         const timer = setTimeout(() => {
             // clear typing event
-            socket.emit("typing", {
-                chat: activeChat,
-                user: user,
-                isTyping: false,
-            });
+            if (activeChat)
+                socket.emit("typing", {
+                    chat: activeChat,
+                    user: user,
+                    isTyping: false,
+                });
         }, 3000);
         return () => clearTimeout(timer);
     }, [message]);

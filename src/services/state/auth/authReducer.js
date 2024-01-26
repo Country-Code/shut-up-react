@@ -8,7 +8,6 @@ export default (state = {}, action) => {
             newState.loading = true;
             break;
         case actionTypes.AUTH_LOGIN_SUCCESS:
-            console.log("authReducer.AUTH_LOGIN_SUCCESS action.payload :", action.payload);
             newState.loading = false;
             newState.user = action.payload?.user;
             break;
