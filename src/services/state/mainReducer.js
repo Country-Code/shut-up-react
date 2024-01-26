@@ -3,6 +3,7 @@ import authReducer from './auth/authReducer'
 import chatsReducer from './chats/chatsReducer'
 import messagesReducer from './messages/messagesReducer'
 import socketReducer from './socket/socketReducer'
+import searchReducer from './search/searchReducer'
 
 export default combineReducers({
     auth: authReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
     messages: messagesReducer.default,
     messagesRequest: messagesReducer.request,
     socket: socketReducer,
+    searchRequest: searchReducer.request,
 });
