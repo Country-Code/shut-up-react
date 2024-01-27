@@ -1,15 +1,28 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import date from "../../../../../utils/date";
 import "./chat.css";
+import useRessource from "../../../../../hooks/useRessource";
+import { useDispatch } from "react-redux";
 
 export default function Chat({ chat }) {
     const { id } = useParams();
     const navigate = useNavigate();
-
+    const [chatRequestState, chatRepo] = useRessource("chats", "Request");
+    const { idActiveChat } =  useRessource("chats");
+    const dispatch = useDispatch();
     const displayChat = (id) => {
-        navigate(`${id}`)
+        dispatch(chatRepo.setIdActiveChat(id));
+        navigate(`${id}`);
     };
+
+    useEffect(() => {
+        const id = idActiveChat;
+        if(id !== null){
+            navigate(`${id}`);
+        }
+    }, [idActiveChat]);
+
     let classList = `userConversation `;
     classList += chat._id === id ? "active" : "";
     return (

@@ -114,5 +114,11 @@ export default (chatApi) => {
         refreshChats: (chats) => async (dispatch) => {
             dispatch({ type: actionsType.CHATS_REFRESH_CHATS, payload: chats });
         },
+        setIdActiveChat: (idActiveChat) => (dispatch) => {
+            dispatch({
+                type: actionsType.CHATS_SET_ID_ACTIVE_CHAT,
+                payload: idActiveChat,
+            });
+        },
     };
 };
