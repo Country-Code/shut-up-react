@@ -8,8 +8,7 @@ import { useDispatch } from "react-redux";
 export default function Chat({ chat }) {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [chatRequestState, chatRepo] = useRessource("chats", "Request");
-    const { idActiveChat } =  useRessource("chats");
+    const [{ idActiveChat }, chatRepo] =  useRessource("chats");
     const dispatch = useDispatch();
     const displayChat = (id) => {
         dispatch(chatRepo.setIdActiveChat(id));
