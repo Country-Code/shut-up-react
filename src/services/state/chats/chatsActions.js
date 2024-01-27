@@ -117,7 +117,7 @@ export default (chatApi) => {
         setIdActiveChat: (idActiveChat) => (dispatch) => {
             dispatch({
                 type: actionsType.CHATS_SET_ID_ACTIVE_CHAT,
-                payload: idActiveChat,
+                payload: {id: idActiveChat},
             });
         },
     };
