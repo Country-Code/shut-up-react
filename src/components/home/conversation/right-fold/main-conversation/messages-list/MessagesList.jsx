@@ -129,7 +129,7 @@ export default function MessagesList() {
             messageListDiv.scrollHeight -
                 messageListDiv.scrollTop -
                 messageListDiv.clientHeight <=
-            0;
+            1;
 
         if (isAtTheBottom && isScrolled) {
             setIsScrolled(false);
