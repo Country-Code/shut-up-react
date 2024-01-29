@@ -16,7 +16,7 @@ function Login() {
     const {
         error,
         loading,
-        data: { user = null },
+        user,
     } = authState;
 
     useEffect(() => {

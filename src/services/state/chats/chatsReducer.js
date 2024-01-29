@@ -15,7 +15,27 @@ export default {
                         chat.updatedAt = action.payload.message.createdAt;
                     }
                     return chat;
-                })
+                });
+                break;
+            case actionTypes.CHATS_REFRESH_TYPING_USERS:
+                if (!newState?.typing) newState.typing = [];
+                if (!newState.typing[action.payload.chat._id]) {
+                    newState.typing[action.payload.chat._id] = [];
+                }
+
+                // remove user from typing list, to prevent duplicates
+                newState.typing[action.payload.chat._id] = newState.typing[
+                    action.payload.chat._id
+                ].filter((user) => user._id !== action.payload.user._id);
+
+                // add user to typing list if is typing
+                if (action.payload.isTyping) {
+                    newState.typing[action.payload.chat._id].push(
+                        action.payload.user
+                    );
+                }
+
+                console.log("newState.typing :", newState.typing);
             case actionTypes.CHATS_SET_ID_ACTIVE_CHAT:
                 newState.idActiveChat = action.payload?.id;
             case actionTypes.CHATS_NEW_CHAT:

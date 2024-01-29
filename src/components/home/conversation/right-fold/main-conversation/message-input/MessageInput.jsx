@@ -6,43 +6,67 @@ import { useParams } from "react-router-dom";
 import useRessource from "../../../../../../hooks/useRessource";
 import { useDispatch, useSelector } from "react-redux";
 import MessageInfo from "../message-info/MessageInfo";
+import useSocket from "../../../../../../hooks/useSocket";
 
 export default function MessageInput() {
-    const [message, setMessage] = useState("");
+    // variables
+    // #############################################################################
     const [messageInfo, setMessageInfo] = useState(false);
-    const [isRecieveMessageOn, setIsRecieveMessageOn] = useState(false);
     const { id } = useParams();
-    const [messagesRequestState, messageRepo] = useRessource(
-        "messages",
-        "Request"
-    );
-    const socketState = useSelector((state) => state.socket);
     const dispatch = useDispatch();
-    const { sendMessage = { loading: false, error: null, data: null } } =
-        messagesRequestState;
+    const socket = useSocket();
+
+    const user = useSelector((state) => {
+        return state.auth.user;
+    });
+
+    const [chatsState] = useRessource("chats");
+    const [
+        { sendMessage = { loading: false, error: null, data: null } },
+        messageRepo,
+    ] = useRessource("messages", "Request");
+
+    const [activeChat, setActiveChat] = useState(null);
+    const [message, setMessage] = useState("");
+
+    // useEffects
+    // #############################################################################
+    useEffect(() => {
+        if (chatsState.chats) {
+            const chat = chatsState.chats.find((chat) => chat._id === id);
+            setActiveChat(chat);
+        }
+    }, [chatsState.chats, id]);
 
     useEffect(() => {
-        if (socketState?.socket && messageRepo && !isRecieveMessageOn) {
-            setIsRecieveMessageOn((oldState) => {
-                if (!oldState)
-                    socketState.socket.on("recieve_message", (message) => {
-                        dispatch(
-                            messageRepo.addMessageToList(
-                                message.chat?._id,
-                                message
-                            )
-                        );
-                    });
-                return true;
+        // if user is typing
+        if (activeChat) {
+            // send typing event
+            socket.emit("typing", {
+                chat: activeChat,
+                user: user,
+                isTyping: true,
             });
         }
-    }, [socketState, messageRepo]);
+        const timer = setTimeout(() => {
+            // clear typing event
+            if (activeChat)
+                socket.emit("typing", {
+                    chat: activeChat,
+                    user: user,
+                    isTyping: false,
+                });
+        }, 3000);
+        return () => clearTimeout(timer);
+    }, [message]);
 
     useEffect(() => {
         if (sendMessage.error) alert(`ERROR : ${sendMessage.error}`);
         if (sendMessage.data?.message) setMessage("");
     }, [sendMessage]);
 
+    // functions
+    // #############################################################################
     const send = () => {
         if (message) {
             dispatch(messageRepo.sendMessage(id, message));
@@ -63,6 +87,8 @@ export default function MessageInput() {
         }
     };
 
+    // return
+    // #############################################################################
     return (
         <div className="message-input-container">
             <div className='message-info-container'>{messageInfo ? <MessageInfo /> : null}</div>
