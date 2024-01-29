@@ -36,8 +36,10 @@ export default {
                 }
 
                 console.log("newState.typing :", newState.typing);
+                break;
             case actionTypes.CHATS_SET_ID_ACTIVE_CHAT:
                 newState.idActiveChat = action.payload?.id;
+                break;
             case actionTypes.CHATS_NEW_CHAT:
                 newState.newChat = action.payload;
                 break;
