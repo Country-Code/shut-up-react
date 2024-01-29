@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 
 export default (state = {}, action) => {
-    let newState = {...state};
+    let newState = { ...state };
     switch (action.type) {
         case actionTypes.AUTH_REQUEST:
         case actionTypes.AUTH_LOGIN_REQUEST:

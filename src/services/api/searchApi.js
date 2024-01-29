@@ -7,7 +7,7 @@ export default () => {
     return {
         searchUsers: async (search_query) => {
             return await api.call(searchAxios, "post", "/users", {
-                search_query
+                search_query,
             });
         },
     };

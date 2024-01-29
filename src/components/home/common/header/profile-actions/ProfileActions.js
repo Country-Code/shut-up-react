@@ -11,20 +11,18 @@ function ProfileActions() {
     };
 
     useEffect(() => {
-
         let handler = (e) => {
             if (!menuRef.current.contains(e.target)) {
                 setMenuOpen(false);
             }
         };
 
-        document.addEventListener('mousedown', handler);
+        document.addEventListener("mousedown", handler);
 
         return () => {
-            document.removeEventListener('mousedown', handler);
-        }
+            document.removeEventListener("mousedown", handler);
+        };
     });
-
 
     return (
         <div className="relative" ref={menuRef}>
@@ -34,15 +32,9 @@ function ProfileActions() {
             {menuOpen && (
                 <div className="dropdown-menu">
                     {" "}
-                    <button className="dropdown-item">
-                        Option 1
-                    </button>
-                    <button className="dropdown-item">
-                        Option 2
-                    </button>
-                    <button className="dropdown-item">
-                        Option 3
-                    </button>
+                    <button className="dropdown-item">Option 1</button>
+                    <button className="dropdown-item">Option 2</button>
+                    <button className="dropdown-item">Option 3</button>
                     <Disconnect />
                 </div>
             )}

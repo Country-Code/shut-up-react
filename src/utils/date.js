@@ -47,7 +47,10 @@ export default {
             let formattedDateMonth = (originalDate.getMonth() + 1)
                 .toString()
                 .padStart(2, "0");
-            let formattedDateDay = originalDate.getDate().toString().padStart(2, "0");    
+            let formattedDateDay = originalDate
+                .getDate()
+                .toString()
+                .padStart(2, "0");
             formattedDate = `${formattedDateMonth}/${formattedDateDay} ${formattedDateTime}`;
         }
         return formattedDate;

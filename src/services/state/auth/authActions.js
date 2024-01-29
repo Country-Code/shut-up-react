@@ -6,11 +6,7 @@ export default (authApi) => {
         register: (fullname, email, password) => async (dispatch) => {
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
-                const data = await authApi.register(
-                    fullname,
-                    email,
-                    password
-                );
+                const data = await authApi.register(fullname, email, password);
                 dispatch({
                     type: actionsType.AUTH_REQUEST_SUCCESS,
                     payload: data,
@@ -20,7 +16,11 @@ export default (authApi) => {
                     localStorage.setItem("token", data.token);
                 }
             } catch (error) {
-                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
+                api.dispatchError(
+                    dispatch,
+                    actionsType.AUTH_REQUEST_FAIL,
+                    error,
+                );
             }
         },
         login: (email, password) => async (dispatch) => {
@@ -42,13 +42,20 @@ export default (authApi) => {
         reset: (newPassword, resetPasswordToken) => async (dispatch) => {
             try {
                 dispatch({ type: actionsType.AUTH_REQUEST });
-                const data = await authApi.reset(newPassword, resetPasswordToken);
+                const data = await authApi.reset(
+                    newPassword,
+                    resetPasswordToken,
+                );
                 dispatch({
                     type: actionsType.AUTH_REQUEST_SUCCESS,
                     payload: data,
                 });
             } catch (error) {
-                api.dispatchError(dispatch, actionsType.AUTH_REQUEST_FAIL, error);
+                api.dispatchError(
+                    dispatch,
+                    actionsType.AUTH_REQUEST_FAIL,
+                    error,
+                );
             }
         },
         forgot: (email) => async (dispatch) => {

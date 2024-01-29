@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import './search-input.css';
+import "./search-input.css";
 import useRessource from "../../../../../hooks/useRessource";
 
 const SearchInput = () => {
     const [chatRequestState, chatRepo] = useRessource("chats", "Request");
-    const [searchRequestState, searchRepo] = useRessource("search", "Request")
+    const [searchRequestState, searchRepo] = useRessource("search", "Request");
     const [showSearchResults, setShowSearchResults] = useState(false);
     const [searchResults, setSearchResults] = useState(null);
     const [authState] = useRessource("auth");
@@ -25,22 +25,27 @@ const SearchInput = () => {
     }, []);
 
     const handleSearch = async (e) => {
-        await dispatch(searchRepo.searchUsers(e.target.value))
-    }
+        await dispatch(searchRepo.searchUsers(e.target.value));
+    };
 
     useEffect(() => {
         if (searchRequestState.searchUsers?.data?.users) {
-            setSearchResults(searchRequestState.searchUsers.data.users)
+            setSearchResults(searchRequestState.searchUsers.data.users);
         }
-    }, [searchRequestState])
+    }, [searchRequestState]);
 
     const handleCreateNewChat = async (id) => {
         console.log(id);
-        console.log(authState.data.user._id);
-        await dispatch(chatRepo.createGroup([authState.data.user._id, id], searchResults.find(user => user._id === id).fullname))
-        await dispatch(chatRepo.getAllChats())
-        dispatch(chatRepo.newChat(false))
-    }
+        console.log(authState.user?._id);
+        await dispatch(
+            chatRepo.createGroup(
+                [authState.user?._id, id],
+                searchResults.find((user) => user._id === id).fullname,
+            ),
+        );
+        await dispatch(chatRepo.getAllChats());
+        dispatch(chatRepo.newChat(false));
+    };
 
     return (
         <>

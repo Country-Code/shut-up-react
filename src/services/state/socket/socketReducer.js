@@ -64,7 +64,7 @@ export default (state = {}, action) => {
                 newState.eventListeners[action.payload.event] = true;
                 newState.socket.on(
                     action.payload.event,
-                    action.payload.callback
+                    action.payload.callback,
                 );
             }
             break;

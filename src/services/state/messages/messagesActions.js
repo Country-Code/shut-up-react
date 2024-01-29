@@ -16,27 +16,29 @@ export default (messagesApi) => {
                 });
                 dispatch({
                     type: ActionTypes.MESSAGES_ADD_MESSAGE,
-                    payload: {id: chatId, message: data.message},
+                    payload: { id: chatId, message: data.message },
                 });
                 dispatch({
                     type: chatsActionTypes.CHATS_REFRESH_NEW_MESSAGE,
-                    payload: {id: chatId, message: data.message},
+                    payload: { id: chatId, message: data.message },
                 });
                 dispatch({
                     type: socketActionTypes.SOCKET_EMIT_NEW_MESSAGE,
-                    payload: {message: data.message},
+                    payload: { message: data.message },
                 });
             } catch (error) {
                 api.dispatchError(
                     dispatch,
                     ActionTypes.MESSAGES_SEND_MESSAGE_FAIL,
-                    error
+                    error,
                 );
             }
         },
         getChatMessages: (chatId) => async (dispatch) => {
             try {
-                dispatch({ type: ActionTypes.MESSAGES_GET_CHAT_MESSAGES_REQUEST });
+                dispatch({
+                    type: ActionTypes.MESSAGES_GET_CHAT_MESSAGES_REQUEST,
+                });
                 const data = await messagesApi.getChatMessages(chatId);
                 dispatch({
                     type: ActionTypes.MESSAGES_GET_CHAT_MESSAGES_SUCCESS,
@@ -46,7 +48,7 @@ export default (messagesApi) => {
                 api.dispatchError(
                     dispatch,
                     ActionTypes.MESSAGES_GET_CHAT_MESSAGES_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -62,24 +64,24 @@ export default (messagesApi) => {
                 api.dispatchError(
                     dispatch,
                     ActionTypes.MESSAGES_READ_MESSAGE_FAIL,
-                    error
+                    error,
                 );
             }
         },
         fitMessagesList: (id, messagesList) => (dispatch) => {
             dispatch({
                 type: ActionTypes.MESSAGES_FIT_MESSAGES_LIST,
-                payload: {id, messagesList},
+                payload: { id, messagesList },
             });
         },
         addMessageToList: (id, message) => (dispatch) => {
             dispatch({
                 type: ActionTypes.MESSAGES_ADD_MESSAGE,
-                payload: {id, message},
+                payload: { id, message },
             });
             dispatch({
                 type: chatsActionTypes.CHATS_REFRESH_NEW_MESSAGE,
-                payload: {id, message},
+                payload: { id, message },
             });
         },
     };

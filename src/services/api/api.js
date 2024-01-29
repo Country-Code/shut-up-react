@@ -38,7 +38,7 @@ export default {
     auth: authApi,
     chats: chatsApi,
     messages: messagesApi,
-    search : searchApi,
+    search: searchApi,
     dispatchError: (dispatch, type, error) => {
         let err = error?.response?.data ?? error;
         const errorCode = err.code;

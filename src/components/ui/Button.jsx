@@ -1,4 +1,3 @@
-
 const Button = ({ loading, buttonText }) => {
     return (
         <button

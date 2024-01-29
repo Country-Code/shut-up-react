@@ -3,20 +3,20 @@ import { BiBell, BiMessageRoundedDetail, BiPhone } from "react-icons/bi";
 export const SidebarData = [
     {
         id: 1,
-        name: 'Activity',
+        name: "Activity",
         icon: <BiBell />,
-        path: "#"
+        path: "#",
     },
     {
         id: 2,
-        name: 'Conversation',
+        name: "Conversation",
         icon: <BiMessageRoundedDetail />,
-        path: "/conversation"
+        path: "/conversation",
     },
     {
         id: 3,
-        name: 'Calls',
+        name: "Calls",
         icon: <BiPhone />,
-        path: "#"
+        path: "#",
     },
-]
+];

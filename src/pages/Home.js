@@ -9,7 +9,7 @@ function Home() {
     const location = useLocation();
 
     useEffect(() => {
-        if (!localStorage.getItem('auth-data')) {
+        if (!localStorage.getItem("auth-data")) {
             navigate("/login");
         } else if (location.pathname === "/") {
             navigate("/conversation");
@@ -17,16 +17,16 @@ function Home() {
     }, []);
 
     return (
-        <div className='home-container'>
+        <div className="home-container">
             <Header />
-            <div className='home-body'>
-                <div className='home-sidebare'>
+            <div className="home-body">
+                <div className="home-sidebare">
                     <Sidebar />
                 </div>
                 <Outlet />
             </div>
         </div>
-    )
+    );
 }
 
-export default Home
+export default Home;

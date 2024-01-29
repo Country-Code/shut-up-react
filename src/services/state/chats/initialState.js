@@ -1,7 +1,7 @@
 export default {
-    default : {
+    default: {
         chats: null,
-        idActiveChat:null,
+        idActiveChat: null,
         newChat: false,
     },
     request: {},

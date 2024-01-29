@@ -12,7 +12,11 @@ export default (chatApi) => {
                     payload: data,
                 });
             } catch (error) {
-                api.dispatchError(dispatch, actionsType.CHATS_ADD_USER_FAIL, error);
+                api.dispatchError(
+                    dispatch,
+                    actionsType.CHATS_ADD_USER_FAIL,
+                    error,
+                );
             }
         },
         createGroup: (users, name) => async (dispatch) => {
@@ -28,7 +32,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_CREATE_GROUP_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -36,7 +40,6 @@ export default (chatApi) => {
             try {
                 dispatch({ type: actionsType.CHATS_GET_ALL_CHATS_REQUEST });
                 const data = await chatApi.getAllChats();
-                console.log(data);
                 dispatch({
                     type: actionsType.CHATS_GET_ALL_CHATS_SUCCESS,
                     payload: data,
@@ -45,7 +48,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_ALL_CHATS_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -61,7 +64,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_CHAT_BY_ID_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -77,7 +80,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_CHAT_BY_USER_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -93,7 +96,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_REMOVE_USER_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -109,7 +112,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_RENAME_CHAT_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -119,11 +122,36 @@ export default (chatApi) => {
         setIdActiveChat: (idActiveChat) => (dispatch) => {
             dispatch({
                 type: actionsType.CHATS_SET_ID_ACTIVE_CHAT,
-                payload: {id: idActiveChat},
+                payload: { id: idActiveChat },
             });
         },
         newChat: (isNew) => (dispatch) => {
-            dispatch({ type: actionsType.CHATS_NEW_CHAT, payload: isNew});
+            dispatch({ type: actionsType.CHATS_NEW_CHAT, payload: isNew });
+        },
+        getChatName: (chatData, loggedUser) => {
+            if (chatData.isGroup && chatData.name) {
+                return chatData.name;
+            }
+            let chatName = chatData.users
+                .map((chatUser) => {
+                    if (chatUser._id !== loggedUser?._id)
+                        return chatUser.fullname;
+                })
+                .filter((name) => name !== undefined)
+                .join(", ");
+            if (chatData.isGroup) chatName = "G: " + chatName;
+            return chatName;
+        },
+        getChatPicSrc: (chatData, loggedUser) => {
+            if (chatData.isGroup) {
+                return "/groupAvatar.png";
+            }
+            let chatPicSrc = chatData.users
+                .map((chatUser) => {
+                    if (chatUser._id !== loggedUser?._id) return chatUser.image;
+                })
+                .filter((picSrc) => picSrc !== undefined)[0];
+            return chatPicSrc;
         },
     };
 };

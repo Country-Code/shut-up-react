@@ -31,13 +31,15 @@ export default {
                 // add user to typing list if is typing
                 if (action.payload.isTyping) {
                     newState.typing[action.payload.chat._id].push(
-                        action.payload.user
+                        action.payload.user,
                     );
                 }
 
                 console.log("newState.typing :", newState.typing);
+                break;
             case actionTypes.CHATS_SET_ID_ACTIVE_CHAT:
                 newState.idActiveChat = action.payload?.id;
+                break;
             case actionTypes.CHATS_NEW_CHAT:
                 newState.newChat = action.payload;
                 break;

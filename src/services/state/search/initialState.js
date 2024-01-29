@@ -1,6 +1,6 @@
 export default {
-    default : {
-        users : null
+    default: {
+        users: null,
     },
-    request : {}
+    request: {},
 };

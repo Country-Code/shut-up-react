@@ -7,7 +7,7 @@ export default {
         };
         let lastIndexOf_ = actionType.lastIndexOf("_");
         const requestType = actionType.substring(
-            lastIndexOf_ === -1 ? 0 : lastIndexOf_ + 1
+            lastIndexOf_ === -1 ? 0 : lastIndexOf_ + 1,
         );
         if (!actionType.startsWith(ressource.toUpperCase())) return "UNKNOWN";
         const step = steps[requestType] ?? "UNKNOWN";

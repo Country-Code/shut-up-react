@@ -73,7 +73,9 @@ export default function MessageInput() {
             setMessage("");
         } else {
             setMessageInfo(true);
-            setTimeout(() => { setMessageInfo(false); }, 2000);
+            setTimeout(() => {
+                setMessageInfo(false);
+            }, 2000);
         }
     };
 
@@ -91,7 +93,9 @@ export default function MessageInput() {
     // #############################################################################
     return (
         <div className="message-input-container">
-            <div className='message-info-container'>{messageInfo ? <MessageInfo /> : null}</div>
+            <div className="message-info-container">
+                {messageInfo ? <MessageInfo /> : null}
+            </div>
             <div className="message-input">
                 <input
                     type="text"

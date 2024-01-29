@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
-import Button from '../components/ui/Button';
+import Button from "../components/ui/Button";
 import logo from "../assets/img/shutUpLogo.png";
 import ErrorMessage from "../components/ui/ErrorMessage";
 
@@ -13,17 +13,13 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [authState, authRepo] = useRessource("auth");
-    const {
-        error,
-        loading,
-        user,
-    } = authState;
+    const { error, loading, user } = authState;
 
     useEffect(() => {
         if (user) {
             navigate("/");
         } else if (error) {
-            ErrorMessage.error(error)
+            ErrorMessage.error(error);
         }
     }, [authState, navigate]);
 
