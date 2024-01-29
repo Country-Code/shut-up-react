@@ -8,10 +8,9 @@ import "./conversation-left-fold.css";
 function ConversationLeftFold() {
     const [chatsList, setChatsList] = useState(null);
     const [chatRequestState, chatRepo] = useRessource("chats", "Request");
-    const [chatState] = useRessource("chats");
+    const [{ chats }] = useRessource("chats");
     const dispatch = useDispatch();
     const { getAllChats } = chatRequestState;
-    const { chats } = chatState;
 
     useEffect(() => {
         if (chatRepo && !chats) {

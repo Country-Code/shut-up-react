@@ -36,7 +36,6 @@ export default (chatApi) => {
             try {
                 dispatch({ type: actionsType.CHATS_GET_ALL_CHATS_REQUEST });
                 const data = await chatApi.getAllChats();
-                console.log(data);
                 dispatch({
                     type: actionsType.CHATS_GET_ALL_CHATS_SUCCESS,
                     payload: data,

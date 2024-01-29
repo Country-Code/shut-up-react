@@ -36,8 +36,8 @@ const SearchInput = () => {
 
     const handleCreateNewChat = async (id) => {
         console.log(id);
-        console.log(authState.data.user._id);
-        await dispatch(chatRepo.createGroup([authState.data.user._id, id], searchResults.find(user => user._id === id).fullname))
+        console.log(authState.user?._id);
+        await dispatch(chatRepo.createGroup([authState.user?._id, id], searchResults.find(user => user._id === id).fullname))
         await dispatch(chatRepo.getAllChats())
         dispatch(chatRepo.newChat(false))
     }
