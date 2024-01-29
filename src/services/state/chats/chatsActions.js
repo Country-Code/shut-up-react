@@ -122,7 +122,32 @@ export default (chatApi) => {
             });
         },
         newChat: (isNew) => (dispatch) => {
-            dispatch({ type: actionsType.CHATS_NEW_CHAT, payload: isNew});
+            dispatch({ type: actionsType.CHATS_NEW_CHAT, payload: isNew });
+        },
+        getChatName: (chatData, loggedUser) => {
+            if (chatData.isGroup && chatData.name) {
+                return chatData.name;
+            }
+            let chatName = chatData.users
+                .map((chatUser) => {
+                    if (chatUser._id !== loggedUser?._id)
+                        return chatUser.fullname;
+                })
+                .filter((name) => name !== undefined)
+                .join(", ");
+            if (chatData.isGroup) chatName = "G: " + chatName;
+            return chatName;
+        },
+        getChatPicSrc: (chatData, loggedUser) => {
+            if (chatData.isGroup) {
+                return "/groupAvatar.png";
+            }
+            let chatPicSrc = chatData.users
+                .map((chatUser) => {
+                    if (chatUser._id !== loggedUser?._id) return chatUser.image;
+                })
+                .filter((picSrc) => picSrc !== undefined)[0];
+            return chatPicSrc;
         },
     };
 };

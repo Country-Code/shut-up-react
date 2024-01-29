@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import date from "../../../../../utils/date";
 import "./chat.css";
@@ -6,42 +6,47 @@ import useRessource from "../../../../../hooks/useRessource";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Chat({ chat }) {
-    const { id } = useParams();
+    // HOOKS :
+    // ###########################################################
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { id } = useParams();
+    const [chatName, setChatName] = useState("");
+    const [chatPicSrc, setChatPicSrc] = useState("");
     const user = useSelector((state) => state.auth?.user);
     const [{ idActiveChat }, chatRepo] = useRessource("chats");
-    const dispatch = useDispatch();
-    const displayChat = (id) => {
-        dispatch(chatRepo.setIdActiveChat(id));
-        navigate(`${id}`);
-    };
 
+    // variables :
+    // ###########################################################
+    let classList = `userConversation `;
+    classList += chat._id === id ? "active" : "";
+
+    // USEEFFECTS :
+    // ###########################################################
+    // #1 : set active chat
     useEffect(() => {
         const id = idActiveChat;
         if (id !== null) {
             navigate(`${id}`);
         }
     }, [idActiveChat]);
-
-    let classList = `userConversation `;
-    classList += chat._id === id ? "active" : "";
-
-    const getChatName = () => {
-        if (chat.isGroup && chat.name) {
-            return chat.name;
+    // #2 : set chat name and pic
+    useEffect(() => {
+        if (chat && chatRepo && user) {
+            setChatName(chatRepo.getChatName(chat, user));
+            setChatPicSrc(chatRepo.getChatPicSrc(chat, user));
         }
-        console.log("chat ", chat);
-        let chatName = chat.users
-            .map((chatUser) => {
-                if (chatUser._id !== user?._id) return chatUser.fullname;
-            })
-            .filter((name) => name !== undefined)
-            .join(", ");
-        console.log("chatName ", chatName);
-        if (chat.isGroup) chatName = "G: " + chatName;
-        return chatName;
+    }, [chat, chatRepo]);
+
+    // FUNCTIONS :
+    // ###########################################################
+    const displayChat = (id) => {
+        dispatch(chatRepo.setIdActiveChat(id));
+        navigate(`${id}`);
     };
 
+    // RETURN :
+    // ###########################################################
     return (
         <button
             className={classList}
@@ -50,10 +55,10 @@ export default function Chat({ chat }) {
         >
             <div className="userConversationInfo-container">
                 <div className="userConversationInfo-img">
-                    <img src={chat.users[1].image} alt="" />
+                    <img src={chatPicSrc} alt="" />
                 </div>
                 <div className="userConversationInfo-name">
-                    <span>{getChatName(chat)}</span>
+                    <span>{chatName}</span>
                 </div>
                 <div className="userConversationInfo-date">
                     {date.getMessageDate(chat.lastMessage?.createdAt)}
