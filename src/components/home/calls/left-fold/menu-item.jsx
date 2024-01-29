@@ -9,6 +9,6 @@ function MenuItem({ item, isActive }) {
             <div className="item-icon">{item.icon}</div>
             <label className="item-label">{item.name}</label>
         </div>
-    )
+    );
 }
 export default MenuItem;

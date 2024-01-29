@@ -12,7 +12,11 @@ export default (chatApi) => {
                     payload: data,
                 });
             } catch (error) {
-                api.dispatchError(dispatch, actionsType.CHATS_ADD_USER_FAIL, error);
+                api.dispatchError(
+                    dispatch,
+                    actionsType.CHATS_ADD_USER_FAIL,
+                    error,
+                );
             }
         },
         createGroup: (users, name) => async (dispatch) => {
@@ -28,7 +32,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_CREATE_GROUP_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -44,7 +48,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_ALL_CHATS_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -60,7 +64,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_CHAT_BY_ID_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -76,7 +80,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_GET_CHAT_BY_USER_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -92,7 +96,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_REMOVE_USER_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -108,7 +112,7 @@ export default (chatApi) => {
                 api.dispatchError(
                     dispatch,
                     actionsType.CHATS_RENAME_CHAT_FAIL,
-                    error
+                    error,
                 );
             }
         },
@@ -118,7 +122,7 @@ export default (chatApi) => {
         setIdActiveChat: (idActiveChat) => (dispatch) => {
             dispatch({
                 type: actionsType.CHATS_SET_ID_ACTIVE_CHAT,
-                payload: {id: idActiveChat},
+                payload: { id: idActiveChat },
             });
         },
         newChat: (isNew) => (dispatch) => {

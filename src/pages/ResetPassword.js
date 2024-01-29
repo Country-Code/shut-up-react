@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import logo from "../assets/img/shutUpLogo.png";
 import useRessource from "../hooks/useRessource";
 import { useDispatch } from "react-redux";
-import Button from '../components/ui/Button';
+import Button from "../components/ui/Button";
 import ErrorMessage from "../components/ui/ErrorMessage";
 
 function ResetPassword() {
@@ -17,10 +17,10 @@ function ResetPassword() {
 
     useEffect(() => {
         if (error) {
-            ErrorMessage.error(error)
-            setErrorMessage(error)
+            ErrorMessage.error(error);
+            setErrorMessage(error);
         } else if (data.message) {
-            ErrorMessage.success(data.message)
+            ErrorMessage.success(data.message);
             navigate("/login");
         }
     }, [authState, data, error]);
@@ -28,8 +28,7 @@ function ResetPassword() {
     const reset = (e) => {
         e.preventDefault();
         dispatch(authRepo.reset(newPassword, token));
-
-    }
+    };
 
     return (
         <div>
@@ -71,13 +70,16 @@ function ResetPassword() {
                                         }}
                                         required
                                     />
-                                    {errorMessage &&
+                                    {errorMessage && (
                                         <div className="block mb-2 text-sm font-medium text-red-900">
                                             {errorMessage}
                                         </div>
-                                    }
+                                    )}
                                 </div>
-                                <Button loading={loading} buttonText="Reset password" />
+                                <Button
+                                    loading={loading}
+                                    buttonText="Reset password"
+                                />
                             </form>
                         </div>
                     </div>

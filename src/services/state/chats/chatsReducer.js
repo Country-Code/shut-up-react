@@ -31,7 +31,7 @@ export default {
                 // add user to typing list if is typing
                 if (action.payload.isTyping) {
                     newState.typing[action.payload.chat._id].push(
-                        action.payload.user
+                        action.payload.user,
                     );
                 }
 

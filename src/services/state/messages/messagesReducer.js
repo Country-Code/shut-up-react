@@ -12,7 +12,8 @@ export default {
                 break;
             case actionsType.MESSAGES_ADD_MESSAGE:
                 logger.log({ data: action.payload, keyWord });
-                if (!newState[action.payload.id]) newState[action.payload.id] = [];
+                if (!newState[action.payload.id])
+                    newState[action.payload.id] = [];
                 newState[action.payload.id] = [
                     ...newState[action.payload.id],
                     action.payload.message,

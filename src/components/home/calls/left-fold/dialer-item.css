@@ -6,7 +6,6 @@
     padding: 6px 0;
 }
 
-
 .dialer-item-avater {
     height: 32px;
 }
@@ -22,7 +21,6 @@
 .dialer-item-name {
     font-weight: 500;
 }
-
 
 .dialer-item-icons {
     display: flex;

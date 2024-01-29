@@ -9,13 +9,12 @@ export default function Message({ message }) {
     const classList = isSender ? "message my-message" : "message";
 
     useEffect(() => {
-        let email = user.getEmail()
-        setIsSender(email === message.sender.email)
+        let email = user.getEmail();
+        setIsSender(email === message.sender.email);
     }, [message]);
 
-
     return (
-        <div className={classList} >
+        <div className={classList}>
             <div className="message-date">
                 {!isSender && `${message.sender.fullname}${" "}`}
                 {date.getMessageDate(message.createdAt)}

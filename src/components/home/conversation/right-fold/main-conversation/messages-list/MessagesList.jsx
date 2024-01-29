@@ -17,7 +17,7 @@ export default function MessagesList() {
     const [isNewMessage, setIsNewMessage] = useState(false);
     const [messagesRequestState, messageRepo] = useRessource(
         "messages",
-        "Request"
+        "Request",
     );
     const [messagesState] = useRessource("messages");
 
@@ -105,7 +105,7 @@ export default function MessagesList() {
                 <>
                     <h1>You start a new conversation</h1>
                     <p>Type your first message below.</p>
-                </>
+                </>,
             );
         }
     }, [getChatMessages, messagesState, id]);
@@ -113,7 +113,7 @@ export default function MessagesList() {
     useEffect(() => {
         if (!getChatMessages.loading && getChatMessages.data && messageRepo) {
             dispatch(
-                messageRepo.fitMessagesList(id, getChatMessages.data?.messages)
+                messageRepo.fitMessagesList(id, getChatMessages.data?.messages),
             );
         }
     }, [getChatMessages.loading]);

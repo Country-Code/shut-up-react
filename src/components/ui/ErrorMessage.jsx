@@ -1,5 +1,5 @@
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const showToast = (message, type) => {
     toast[type](message, {
@@ -8,10 +8,10 @@ const showToast = (message, type) => {
 };
 
 const ErrorMessage = {
-    success: (message) => showToast(message, 'success'),
-    error: (message) => showToast(message, 'error'),
-    info: (message) => showToast(message, 'info'),
-    warning: (message) => showToast(message, 'warning'),
+    success: (message) => showToast(message, "success"),
+    error: (message) => showToast(message, "error"),
+    info: (message) => showToast(message, "info"),
+    warning: (message) => showToast(message, "warning"),
 };
 
 export default ErrorMessage;
