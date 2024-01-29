@@ -51,10 +51,21 @@ function ConversationLeftFold() {
             })
             .map((chat) => <Chat key={chat._id} chat={chat} />);
     };
-
+    const addNewChat = () => {
+        dispatch(chatRepo.newChat(true))
+    }
     return (
         <div className="leftFold conversation-left-fold">
-            <div className="fold-title">Conversations</div>
+            <div className="fold-title flex flex-row justify-between">
+                <div className="title">
+                    Conversations
+                </div>
+                <div className="new-conversation right-0">
+                    <button onClick={addNewChat}>
+                        new
+                    </button>
+                </div>
+            </div>
             <div className="fold-main">
                 <div className="conversations">{chatsList}</div>
             </div>

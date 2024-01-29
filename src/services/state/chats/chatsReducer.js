@@ -18,6 +18,8 @@ export default {
                 })
             case actionTypes.CHATS_SET_ID_ACTIVE_CHAT:
                 newState.idActiveChat = action.payload?.id;
+            case actionTypes.CHATS_NEW_CHAT:
+                newState.newChat = action.payload;
                 break;
             default:
                 break;

@@ -19,6 +19,7 @@ export default (chatApi) => {
             try {
                 dispatch({ type: actionsType.CHATS_CREATE_GROUP_REQUEST });
                 const data = await chatApi.createGroup(users, name);
+                console.log(data);
                 dispatch({
                     type: actionsType.CHATS_CREATE_GROUP_SUCCESS,
                     payload: data,
@@ -35,6 +36,7 @@ export default (chatApi) => {
             try {
                 dispatch({ type: actionsType.CHATS_GET_ALL_CHATS_REQUEST });
                 const data = await chatApi.getAllChats();
+                console.log(data);
                 dispatch({
                     type: actionsType.CHATS_GET_ALL_CHATS_SUCCESS,
                     payload: data,
@@ -119,6 +121,9 @@ export default (chatApi) => {
                 type: actionsType.CHATS_SET_ID_ACTIVE_CHAT,
                 payload: {id: idActiveChat},
             });
+        },
+        newChat: (isNew) => (dispatch) => {
+            dispatch({ type: actionsType.CHATS_NEW_CHAT, payload: isNew});
         },
     };
 };
